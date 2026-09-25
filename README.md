@@ -8,6 +8,24 @@ aircraft.
 Developed for the MathWorks Challenge Project
 [Energy-Optimal Trajectory Planning for Multirotor Drones](https://github.com/mathworks/MATLAB-Simulink-Challenge-Project-Hub/tree/main/projects/Energy-Optimal%20Trajectory%20Planning%20for%20Multirotor%20Drones).
 
+## Results
+
+The numerical study covers 96 cases across Cambridge, Seattle and Manhattan:
+72 controller comparisons, 12 payload cases and 12 event-replanning cases.
+All tasks reached completion; 70 satisfied the full set of performance criteria.
+
+![Modeled mission energy and position tracking across six controllers](docs/images/controller-comparison.png)
+
+Each controller is evaluated on the same six tasks with two planning methods.
+Compared with PID, GP/eNMPC reduces modeled mission energy by 3.10% and position
+RMSE by 65.23%, averaged over the 12 paired configurations. Compared with eNMPC,
+it reduces position RMSE by 24.89% with 1.34% higher modeled mission energy.
+
+The [numerical results](results/README.md) include three-axis tracking,
+trajectory, power and cumulative energy plots, together with the full tables.
+The [hardware in the loop implementation](hil/README.md) provides the controller
+source, Pixhawk firmware, software requirements and session instructions.
+
 ## Run
 
 Open this folder in MATLAB and run:
@@ -32,6 +50,12 @@ To select a different task:
 ```matlab
 [trace, result, folder] = main("seattle_01", "energy");
 main("manhattan_02", "distance", Method="robust_se3");
+```
+
+To reopen a saved run:
+
+```matlab
+view_result(fullfile(folder, "simulation.mat"));
 ```
 
 ### Requirements
@@ -85,25 +109,6 @@ wind and payload; the `distance` plan uses distance-based routing.
 | `nominal_se3` | Nominal geometric tracking |
 | `pid` | Cascaded PID |
 
-## Results
-
-The numerical study contains 72 controller-comparison cases, 12 payload cases
-and 12 event-replanning cases. All 96 tasks reached completion; 70 satisfied
-the full set of performance criteria. The [result tables](results/README.md)
-report energy, tracking error, motion smoothness, rotor commands and timing.
-
-![Seattle delivery task: trajectory, tracking error, rotor commands, wind, compensation and solver time](docs/images/seattle-response.png)
-
-Example: Seattle 01 with the energy aware plan and GP/eNMPC controller. The six
-panels show the trajectory, tracking error, rotor forces, wind, compensation,
-and eNMPC computation time.
-
-To reopen a run, pass its `simulation.mat` file to `view_result`:
-
-```matlab
-view_result(fullfile(folder, "simulation.mat"));
-```
-
 ## Mission planning
 
 Run from the repository root:
@@ -129,6 +134,11 @@ CopterSim dynamics and RflySim3D visualization.
 
 The [hardware guide](docs/hardware.md) describes the experiment software,
 firmware target, compilation and installation process, and session controls.
+The [HIL directory](hil/README.md) contains the Pixhawk 6C controller source,
+reference firmware, MATLAB host interface, configuration templates and offline
+tests. See [Firmware build](hil/docs/build.md), [Session setup](hil/docs/setup.md)
+and [Simulator setup](hil/docs/platform_inputs.md) for the development tools,
+board configuration, CopterSim model and SDK inputs.
 
 ```matlab
 open_system(fullfile('models', 'Hexarotor_HIL.slx'))
@@ -169,16 +179,8 @@ construction and retraining.
 - `data/tasks`, `data/gp`: task inputs and pre-trained model.
 - `data/cities`, `planning`: maps, delivery tasks and route planning.
 - `models`, `docs`: system diagram and project presentation.
-- `results`, `tests`: study tables and executable tests.
-
-## Hardware in the loop
-
-The [HIL directory](hil/README.md) contains the Pixhawk 6C controller source,
-reference firmware, MATLAB host interface, configuration templates and offline
-tests. See [Firmware build](hil/docs/build.md) and
-[Session setup](hil/docs/setup.md) for the required development tools and local
-hardware configuration. The CopterSim session uses the project-specific model
-and SDK inputs listed in [Simulator setup](hil/docs/platform_inputs.md).
+- `results`: numerical study figures, tables and plotting code.
+- `tests`: executable numerical tests.
 
 ## Acknowledgments and license
 

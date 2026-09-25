@@ -60,8 +60,6 @@ The GPENMPC application targets `px4_fmu-v6c_default` and uses PX4 base commit
 | --- | --- |
 | `px4_fmu-v6c_default.px4` | Packaged application for the PX4 uploader |
 | `px4_fmu-v6c_default.bin` | Raw application image |
-| `px4_fmu-v6c_default.elf` | Linked application and debugging symbols |
-| `px4_fmu-v6c_default.map` | Linker map |
 | `parameters.json` and `parameters.xml` | Firmware parameter definitions |
 | `airframes.xml` | Airframe metadata |
 

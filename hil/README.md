@@ -22,7 +22,7 @@ the response; RflySim3D displays the vehicle motion.
 | `source/hil/rfly_vendor_integration/application_integration` | PX4 application overlays, board files and build dependencies |
 | `assets/canonical` | Controller configuration, GP model and numerical-method sources |
 | `source/hil/task_packages` | Delivery task data and reference trajectories |
-| `firmware/fmuv6c` | FMUv6C firmware, parameters and source identities |
+| `firmware/fmuv6c` | FMUv6C firmware, parameters and build information |
 | `environment` | Recorded MATLAB and RflySim versions |
 | `licenses` | Component license notices |
 
