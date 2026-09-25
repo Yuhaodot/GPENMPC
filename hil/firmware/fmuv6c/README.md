@@ -11,14 +11,11 @@ AF571397E67013D23D59EF2827B879B76A408271713891686790BD64661B4743
 
 `firmware.json` records artifact sizes and hashes, compiler versions, controller
 identity and matching task, configuration and GP identities. The parameter
-files describe this build. The build also produces ELF and map files for
-debugging; their hashes are recorded under `debug_artifacts`.
+files describe this build.
 
 `libgpenmpc_full_inner_private.a` contains the 74 compiled controller translation
-units. `FullInnerBuildIdentity.h` and `source_identity.json` bind the archive to
-its generated and interface sources. `compiled_source_manifest.json` records
-compiled inputs and linked archives; `source_manifest.json` records the supplied
-firmware source tree.
+units. `FullInnerBuildIdentity.h` supplies the controller build identity used by
+the firmware interface.
 
 See [Build](../../docs/build.md) for configuration and compilation, and
 [Local configuration](../../docs/setup.md) for matching host assets. License and

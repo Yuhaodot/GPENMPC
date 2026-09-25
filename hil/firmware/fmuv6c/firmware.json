@@ -26,9 +26,6 @@
     "Ninja": "1.11.1",
     "Python": "3.12.3"
   },
-  "source_identity": "source_identity.json",
-  "compiled_source_manifest": "compiled_source_manifest.json",
-  "distribution_source_manifest": "source_manifest.json",
   "controller_archive": {
     "file": "libgpenmpc_full_inner_private.a",
     "bytes": 797672,
@@ -60,20 +57,5 @@
       "bytes": 19501,
       "sha256": "A390D953B4612D158F64818EBA18060186AFD1CB3EFFBA7DB33D6B3FAF3C5E19"
     }
-  ],
-  "debug_artifacts": {
-    "distribution": "separate debug bundle",
-    "files": [
-      {
-        "file": "px4_fmu-v6c_default.elf",
-        "bytes": 41414864,
-        "sha256": "E59D92FA630061841AE3A452D94951C46230DB91A26F591A1D6394D34952FC5E"
-      },
-      {
-        "file": "px4_fmu-v6c_default.map",
-        "bytes": 7530140,
-        "sha256": "F80B75127B5FFADF6EF5867742D5DAAB23469854B7571C1C2BF966D5F814BE76"
-      }
-    ]
-  }
+  ]
 }
