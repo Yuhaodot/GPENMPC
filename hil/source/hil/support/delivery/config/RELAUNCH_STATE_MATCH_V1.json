@@ -1,0 +1,13 @@
+{
+  "schema": "GPENMPC_CAUSAL_RELAUNCH_STATE_MATCH_V1",
+  "maximum_horizontal_offset_m": 2.0,
+  "maximum_vertical_frame_offset_m": 12.0,
+  "maximum_estimator_plant_horizontal_gap_m": 0.75,
+  "maximum_estimator_speed_mps": 0.5,
+  "state_match_duration_s": 11.0,
+  "basis": "CAUSAL_PX4_LOCAL_POSITION_CAPTURED_ONLY_WHILE_DUAL_GROUND_AND_DISARMED",
+  "plant_truth_used_for_command": false,
+  "vertical_semantics": "CONSTANT_LOCAL_NED_FRAME_TRANSFORM_UNTIL_NEXT_CONFIRMED_GROUND_SERVICE",
+  "horizontal_semantics": "SEVENTH_ORDER_C3_REMOVAL_OVER_SERVICE_ASCENT",
+  "formal_task_reference_unchanged": true
+}

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<mavlink>
+  <!-- Keep the MATLAB dialect used by 005 byte-for-byte for existing messages.
+       Only add the four Events Protocol messages from the exact PX4 v1.16
+       src/modules/mavlink/mavlink/message_definitions/v1.0/common.xml.
+       These definitions are marked WIP upstream: bind them to this firmware,
+       not to an assumed future protocol. No actuator/control definition changes. -->
+  <include>common_local_full_inner.xml</include>
+  <version>3</version>
+  <enums>
+    <enum name="MAV_EVENT_ERROR_REASON">
+      <entry value="0" name="MAV_EVENT_ERROR_REASON_UNAVAILABLE"><description>Event unavailable.</description></entry>
+    </enum>
+    <enum name="MAV_EVENT_CURRENT_SEQUENCE_FLAGS">
+      <entry value="1" name="MAV_EVENT_CURRENT_SEQUENCE_FLAGS_RESET"><description>Sequence reset.</description></entry>
+    </enum>
+  </enums>
+  <messages>
+    <message id="410" name="EVENT">
+      <description>PX4 event; exact interpretation requires matching firmware metadata.</description>
+      <field type="uint8_t" name="destination_component">Component ID.</field>
+      <field type="uint8_t" name="destination_system">System ID.</field>
+      <field type="uint32_t" name="id">Event identifier.</field>
+      <field type="uint32_t" name="event_time_boot_ms">Boot time in milliseconds.</field>
+      <field type="uint16_t" name="sequence">Event sequence number.</field>
+      <field type="uint8_t" name="log_levels">Internal and external levels.</field>
+      <field type="uint8_t[40]" name="arguments">Raw arguments retained unchanged.</field>
+    </message>
+    <message id="411" name="CURRENT_EVENT_SEQUENCE">
+      <description>Latest event sequence.</description>
+      <field type="uint16_t" name="sequence">Event sequence number.</field>
+      <field type="uint8_t" name="flags" enum="MAV_EVENT_CURRENT_SEQUENCE_FLAGS">Sequence flags.</field>
+    </message>
+    <message id="412" name="REQUEST_EVENT">
+      <description>Request an inclusive event sequence range.</description>
+      <field type="uint8_t" name="target_system">System ID.</field>
+      <field type="uint8_t" name="target_component">Component ID.</field>
+      <field type="uint16_t" name="first_sequence">First sequence.</field>
+      <field type="uint16_t" name="last_sequence">Last sequence.</field>
+    </message>
+    <message id="413" name="RESPONSE_EVENT_ERROR">
+      <description>Requested event unavailable.</description>
+      <field type="uint8_t" name="target_system">System ID.</field>
+      <field type="uint8_t" name="target_component">Component ID.</field>
+      <field type="uint16_t" name="sequence">Requested sequence.</field>
+      <field type="uint16_t" name="sequence_oldest_available">Oldest available sequence.</field>
+      <field type="uint8_t" name="reason" enum="MAV_EVENT_ERROR_REASON">Error reason.</field>
+    </message>
+  </messages>
+</mavlink>

@@ -1,0 +1,68 @@
+{
+  "first_party": "MIT; scope and exceptions in LICENSE and docs/licensing.md",
+  "component_index": "licenses/README.md",
+  "license_files": [
+    {
+      "file": "LICENSE",
+      "bytes": 1296,
+      "sha256": "2BB7CDBAB622EBCF5B48ADE5018DBA99CC891695DE71E8BDF79F75CB9B74AA40"
+    },
+    {
+      "file": "licenses/GNU-Arm-Embedded-LICENSE.txt",
+      "bytes": 542417,
+      "sha256": "1FB864380D10C051E67F376E5784421CEDDBC7C56C195ED14C71B7393ADD91AA"
+    },
+    {
+      "file": "licenses/heatshrink-LICENSE.txt",
+      "bytes": 778,
+      "sha256": "719955E6B3498B00D36046F19F4B785B238C65501BD009373B5AF573912A7037"
+    },
+    {
+      "file": "licenses/libevents-LICENSE.txt",
+      "bytes": 1495,
+      "sha256": "B2F793CDDCE56229B5D4B06B57FD3BC3CA79214CDE3D17503724590C9A66C8F5"
+    },
+    {
+      "file": "licenses/MAVLink-COPYING.txt",
+      "bytes": 9437,
+      "sha256": "81133BA4D3343A0E627DD0D9582134F956BC9DC82322D369C561249CC2910224"
+    },
+    {
+      "file": "licenses/NuttX-apps-NOTICE.txt",
+      "bytes": 161,
+      "sha256": "F280FC32B68C831FD6847BBECF01A45C1BD8E907D719BC7C68A4F94CE25EEEDA"
+    },
+    {
+      "file": "licenses/NuttX-LICENSE.txt",
+      "bytes": 318603,
+      "sha256": "9F7C5FA2FCEEB49EFE189766AD385E412B003C35E496053C3799F542686A9E76"
+    },
+    {
+      "file": "licenses/NuttX-NOTICE.txt",
+      "bytes": 3107,
+      "sha256": "1F6AC972692C4F94FE4B904590654AEB795FF08EFD9799427C2358FB568814BB"
+    },
+    {
+      "file": "licenses/PX4-GPS-LICENSE.txt",
+      "bytes": 1491,
+      "sha256": "C0E700DED33820C13092A01D34AA75D25A3E78EA67D3037AE204DE8544C64DB2"
+    },
+    {
+      "file": "licenses/PX4-LICENSE.txt",
+      "bytes": 1527,
+      "sha256": "4F486239F62804B2190FF52B3005F087CF1033342012152E6383BDAD6B891CC4"
+    },
+    {
+      "file": "source/hil/rfly_vendor_integration/application_integration/private_dependencies/Micro-CDR/LICENSE",
+      "bytes": 11358,
+      "sha256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30"
+    },
+    {
+      "file": "source/hil/rfly_vendor_integration/application_integration/private_dependencies/Micro-XRCE-DDS-Client/LICENSE",
+      "bytes": 11358,
+      "sha256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30"
+    }
+  ],
+  "generated_code": "MathWorks Program Offering Guide Part Two, Sections 1-3.2, and producing license offering; preserve file notices",
+  "vendor_templates": "Exact paths and provenance are listed in docs/licensing.md; excluded from the original-source MIT grant"
+}

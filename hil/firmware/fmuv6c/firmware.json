@@ -1,0 +1,79 @@
+{
+  "version": "GPENMPC",
+  "board": "PX4 FMUv6C",
+  "board_id": 56,
+  "board_revision": 0,
+  "px4_base_commit": "6ea3539157ca358c70a515878b77077af7d4611d",
+  "build_datetime": "Sep 25 2026 17:26:15",
+  "image_bytes": 1962048,
+  "image_size": 1962048,
+  "image_maxsize": 1966080,
+  "identity": {
+    "generated_source_set_sha256": "7636578D4169E8F66522BD37BCD54C316978DE18C58A0CE2CB93B7FC6F7AD468",
+    "facade_source_set_sha256": "AE105FBD136D5D8956B325449A911F87541FCDD9BF260FB7ECD6DEE97E50AFC0",
+    "private_archive_sha256": "6ED86A8479A93D106DB6E32230140F96432CA25D755280DB4775FE005E3E3C0C",
+    "operator_reference_sha256": "78BA9A5E29F825D4A594A1D91EDC9012E0BA88A16E52D06C8E86B6A797246EA7"
+  },
+  "asset_identity": {
+    "task_sha256": "B876546B468265F84BD028AC549B06EF8ADDCB25CBA09CF389A08F4B21290A5F",
+    "configuration_payload_sha256": "A859433D0AA774013341444A4B9AE971A34F12B4FB89C0A004B2CB3E013FCEBA",
+    "runtime_binding_sha256": "0F5EB8AC4073384689368DE7C631E54D761F7E3016128A06B5EE3841FB14E9CF",
+    "gp_sha256": "4A09E9A3D4818B5555CD3439A6D2133026EEA0FDC2774A1FB17F9E05486E5BB2"
+  },
+  "tools": {
+    "ARM_GCC": "10.3.1 (GNU Arm Embedded 10.3-2021.10)",
+    "CMake": "3.28.3",
+    "Ninja": "1.11.1",
+    "Python": "3.12.3"
+  },
+  "source_identity": "source_identity.json",
+  "compiled_source_manifest": "compiled_source_manifest.json",
+  "distribution_source_manifest": "source_manifest.json",
+  "controller_archive": {
+    "file": "libgpenmpc_full_inner_private.a",
+    "bytes": 797672,
+    "sha256": "6ED86A8479A93D106DB6E32230140F96432CA25D755280DB4775FE005E3E3C0C"
+  },
+  "artifacts": [
+    {
+      "file": "px4_fmu-v6c_default.px4",
+      "bytes": 1855252,
+      "sha256": "AF571397E67013D23D59EF2827B879B76A408271713891686790BD64661B4743"
+    },
+    {
+      "file": "px4_fmu-v6c_default.bin",
+      "bytes": 1962048,
+      "sha256": "239FA4E221FA04466C8E53F4D8DED5D83F4444FE82C87D34CC1E70936C401992"
+    },
+    {
+      "file": "parameters.json",
+      "bytes": 859281,
+      "sha256": "77DFC1A79544FA3C50E7FFD58043BB31C654C0671C7B5675623C01C8DFE29986"
+    },
+    {
+      "file": "parameters.xml",
+      "bytes": 895395,
+      "sha256": "310E22F07D8ACE60303E089DCBFE285E41D777AA4840D28CFBABC68800CCC48A"
+    },
+    {
+      "file": "airframes.xml",
+      "bytes": 19501,
+      "sha256": "A390D953B4612D158F64818EBA18060186AFD1CB3EFFBA7DB33D6B3FAF3C5E19"
+    }
+  ],
+  "debug_artifacts": {
+    "distribution": "separate debug bundle",
+    "files": [
+      {
+        "file": "px4_fmu-v6c_default.elf",
+        "bytes": 41414864,
+        "sha256": "E59D92FA630061841AE3A452D94951C46230DB91A26F591A1D6394D34952FC5E"
+      },
+      {
+        "file": "px4_fmu-v6c_default.map",
+        "bytes": 7530140,
+        "sha256": "F80B75127B5FFADF6EF5867742D5DAAB23469854B7571C1C2BF966D5F814BE76"
+      }
+    ]
+  }
+}

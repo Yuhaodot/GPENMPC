@@ -1,0 +1,18 @@
+{
+  "schema": "GPENMPC_SERVICE_HEIGHT_CONFIGURATION_V1",
+  "service_start_altitude_source": "mission_node_xyz_m_z",
+  "expected_service_start_altitude_m": 10,
+  "service_target_altitude_formula": "planning_radius_m + 0.02",
+  "planning_radius_m": 0.984,
+  "service_target_altitude_m": 1.004,
+  "vertical_distance_each_m": 8.996,
+  "vertical_rate_mps": 1,
+  "vertical_endpoint_allowance_s": 1,
+  "vertical_duration_each_s": 9.996,
+  "ground_service_duration_s": 8,
+  "total_service_duration_each_delivery_s": 27.992,
+  "deliveries_per_mission": 4,
+  "total_service_duration_per_mission_s": 111.968,
+  "service_representation": "Delivery service is represented by elapsed time and modeled energy, followed by a node-hover state reset.",
+  "continuous_service_flight_simulation": false
+}

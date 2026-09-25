@@ -1,0 +1,39 @@
+{
+  "method": {
+    "public_name": "GP Enhanced Energy Aware eNMPC with Robust SE(3) Tracking Control",
+    "internal_architecture": "A1_COORDINATED_PHYSICAL",
+    "runtime_method_id": "B2_ENMPC_GP_MEAN_TOTAL_TUBE",
+    "planner_id": "P_ENERGY_WIND_PAYLOAD",
+    "ordinary_b2": false,
+    "source_manifest_sha256": "73B05811B5D1EC37892650F29FD0F479696D186FAE20939EF1492DE9DA5A7F5D",
+    "effective_configuration_binding_sha256": "0F5EB8AC4073384689368DE7C631E54D761F7E3016128A06B5EE3841FB14E9CF",
+    "effective_configuration_payload_sha256": "A859433D0AA774013341444A4B9AE971A34F12B4FB89C0A004B2CB3E013FCEBA",
+    "effective_configuration_mat_sha256": "BBD90BB08A69A80097E5F73687825EB4A214F44B5C87093AB0F2DC4F78D34C2A",
+    "gp_model_sha256": "4A09E9A3D4818B5555CD3439A6D2133026EEA0FDC2774A1FB17F9E05486E5BB2"
+  },
+  "required_before_any_logical_arm": [
+    "new run_id and new prelaunch receipt",
+    "canonical package verifier PASS",
+    "all method, source, configuration, GP, mission, plan and task SHA values match",
+    "one explicitly named dynamics plant owner and no second plant",
+    "single owner of the configured serial port",
+    "six virtual rotor mapping verified",
+    "physical propulsion power absent and physical PWM zero",
+    "board UID, firmware SHA and required symbols verified",
+    "gpenmpc_se3_control running and RA_CTRL_MODE=1 if the admitted deployment contract uses mode 1",
+    "MATLAB/Simulink provides HIL control and orchestration; Python provides build, upload and supporting tools",
+    "runtime exposes actual eNMPC outer solve activity rather than configuration loading alone"
+  ],
+  "required_runtime_evidence": [
+    "outer_update_count greater than zero",
+    "solver success, failure, deadline and solve-time distribution",
+    "selected candidate and phase progress, rate and acceleration",
+    "GP inference count and adopted, downweighted and hard-invalid counts",
+    "Exact B1 fallback count",
+    "control commit continuity state",
+    "Pixhawk mode and module status",
+    "physical PWM remains zero"
+  ],
+  "rflysim_role": "display and recording for the same run_id only; replay must not be reported as live HIL",
+  "schema": "GPENMPC_RUNTIME_REQUIREMENTS_V1"
+}

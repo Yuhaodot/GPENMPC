@@ -1,0 +1,6 @@
+#ifndef GPENMPC_REFERENCE_TEST_INITIALIZATION_FORWARDER_H
+#define GPENMPC_REFERENCE_TEST_INITIALIZATION_FORWARDER_H
+/* Forward to the shared-library initializer. */
+#include "gpenmpcNative_canonicalLocalInnerFixedFirst_initialize.h"
+#define gpenmpcNative_queryCanonicalReferenceWindow_initialize gpenmpcNative_canonicalLocalInnerFixedFirst_initialize
+#endif

@@ -1,0 +1,51 @@
+{
+  "runtime_method_id": "B2_ENMPC_GP_MEAN_TOTAL_TUBE",
+  "formal_method_id": "M6_GP_ENHANCED_ENMPC_ROBUST_TRACKING_030",
+  "ordinary_b2": false,
+  "prediction_only_gp": false,
+  "planner_id": "P_ENERGY_WIND_PAYLOAD",
+  "timing": {
+    "outer_update_period_s": 0.3,
+    "prediction_step_s": 0.2,
+    "horizon_steps": 8,
+    "prediction_horizon_s": 1.6,
+    "solver_deadline_s": 0.28,
+    "inner_control_period_s": 0.01
+  },
+  "required_runtime_assertions": {
+    "coordinated_architecture_enabled": true,
+    "coordinated_architecture_mode": "A1_COORDINATED_PHYSICAL",
+    "coordinated_physical_gp_application_enabled": true,
+    "coordinated_gp_execution_feedforward_enabled": true,
+    "gp_responsibility_gate_enabled": true,
+    "command_continuity_enabled": true,
+    "risk_equivalence_tolerance": 1e-06,
+    "tracking_equivalence_tolerance": 0.0001,
+    "objective_relative_switch_improvement": 0.005
+  },
+  "required_configuration_chain": [
+    "gpenmpcLoadNativeEnmpcComparisonAssets(projectRoot, 0.30)",
+    "gpenmpcApplyArchitectureConfiguration(config, robustConfig, A1_COORDINATED_PHYSICAL)",
+    "gpenmpcApplyCommandContinuityConfiguration(config)"
+  ],
+  "schema": "GPENMPC_EXECUTION_BINDING_V1",
+  "package_root": ".",
+  "source_entry_count": 160,
+  "canonical_paths": {
+    "source_root": "method_source/matlab",
+    "source_project_root": "method_source",
+    "source_manifest": "binding/source_manifest.json",
+    "gp_model": "models_and_gp/MATLAB_NATIVE_SPARSE_GP_MODEL.mat",
+    "effective_config_mat": "binding/runtime_configuration.mat",
+    "effective_config_binding": "binding/runtime_binding.json",
+    "runtime_requirements": "binding/runtime_requirements.json"
+  },
+  "expected_sha256": {
+    "canonical_source_manifest": "73B05811B5D1EC37892650F29FD0F479696D186FAE20939EF1492DE9DA5A7F5D",
+    "gp_model": "4A09E9A3D4818B5555CD3439A6D2133026EEA0FDC2774A1FB17F9E05486E5BB2",
+    "effective_configuration_mat": "BBD90BB08A69A80097E5F73687825EB4A214F44B5C87093AB0F2DC4F78D34C2A",
+    "effective_configuration_payload": "A859433D0AA774013341444A4B9AE971A34F12B4FB89C0A004B2CB3E013FCEBA",
+    "effective_configuration_binding": "0F5EB8AC4073384689368DE7C631E54D761F7E3016128A06B5EE3841FB14E9CF",
+    "runtime_requirements": "1B09A0DB83A5AA4A1C4C9DCD6DBFF51A74DEE178C04F3B00DF8AA8AB789A7056"
+  }
+}

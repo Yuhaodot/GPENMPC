@@ -1,0 +1,805 @@
+{
+  "schema": "GPENMPC_SOURCE_MANIFEST_V1",
+  "entries": [
+    {
+      "path": "implementation/comparison/gpenmpcAllFiniteActiveTrace.m",
+      "bytes": 2040,
+      "sha256": "55398B192DCF8D905DF73B440CEA41A93C61225EAF88979CC4300D5B0726B7A0"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcApplyFixedC3ServiceTransition.m",
+      "bytes": 2133,
+      "sha256": "9D5B3200F7023F1C261C418FD5DBFDE6124E971BD48A954E0EC00E3F5B54D0FC"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcCommitFixedC3CausalHistory.m",
+      "bytes": 793,
+      "sha256": "F6F4FD6A4E61C654B08DE949A8AFC51D59D33501B4DEE8B7DE89D644F3595890"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcComputeFixedC3WholeTaskMetrics.m",
+      "bytes": 5488,
+      "sha256": "8F627751D3D039F1C79421797D84A2F012B713F944F11642ED1AA112CF8FF91D"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcDiscoverNativeComparisonUnits.m",
+      "bytes": 5748,
+      "sha256": "36B81C3C88B3BE058F1ABC2A8075428E51C80D0DD53681A28EDBD525251F2EC1"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcFixedC3MethodContract.m",
+      "bytes": 1544,
+      "sha256": "75021BCC5F02ECF7CC8D424D812C30975931113D209C13CE1BEDF537FAEEDE4B"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcGpRobustSe3Augmentation.m",
+      "bytes": 6723,
+      "sha256": "68C47587FFA07E5A24441B5D416A171E553758E5150AEECB690CA9A630C4BD52"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcInitializeFixedC3MethodState.m",
+      "bytes": 982,
+      "sha256": "9B682D30141A102E8F4098958C1966E9DC13F651008FE182BE8995995140E1F8"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcLoadIndependentDevelopmentTask.m",
+      "bytes": 7207,
+      "sha256": "5196E7EA67A1BC8F846CABD0E3395A3863B44493F77B05F3FF2F509B065A881B"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcLoadNativeComparisonUnit.m",
+      "bytes": 4418,
+      "sha256": "B41A8B66475625569DDBF92A05358B32637CE3DC0174C6477DCDB63D0839557E"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcLoadNativeEnmpcComparisonAssets.m",
+      "bytes": 2043,
+      "sha256": "7074CC02376E54DE978F2BE7FE5C2292CC0F7D9BF94BD3CAABAABB9779E68F8F"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcMakeNoDisturbanceDiagnosticTask.m",
+      "bytes": 2601,
+      "sha256": "6F63A81B64F03A19FC9881B889E8364D85BF5B1057FD432949BD5198179850A3"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcNativeB1OuterStep.m",
+      "bytes": 6780,
+      "sha256": "C34CA0061C28842B6741802DA13A64CC3ADAD7C82D2D7DF80ABD52ABC247033C"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcNativeEnmpcPredictionContext.m",
+      "bytes": 2107,
+      "sha256": "BEBB86F5E0C785F4456BBD7A3F5952753E60416E63C37AF36A8C2661C21F8746"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcObserveFixedC3CausalHistory.m",
+      "bytes": 1150,
+      "sha256": "CFAD0A34A859750CE43BD1C9882F8185ED18229EE5650E151A281C058163B7B2"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcRunFixedC3WholeTask.m",
+      "bytes": 14726,
+      "sha256": "6BC1EDA29ED97E8248317036D09D61EDFADA7BD33FA0B8942BE4803DF67F651F"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcRunNativeEnmpcWholeTask.m",
+      "bytes": 59172,
+      "sha256": "30AB4F19A59CF0EF1B51ADC3AE388D723F81E51ED8B9F855B9E0EABE91D066E9"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcSampledC3Trajectory.m",
+      "bytes": 1770,
+      "sha256": "8E1B1DBE5E224E7047252399C51E235DDCA8685B58185A85ACBE43370207FF1B"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcSha256File.m",
+      "bytes": 703,
+      "sha256": "11DE7341885C96CE02AC557733A078F3AAF433B585B41196AB2E67B948AFFADA"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcWriteContentAddressedJson.m",
+      "bytes": 1181,
+      "sha256": "0DCC9348E0CEAECAAFFF5FC68E2D75206473C93E42C67062DE9D9BA98AE0F497"
+    },
+    {
+      "path": "implementation/comparison/gpenmpcWriteNativeEnmpcCase.m",
+      "bytes": 4143,
+      "sha256": "5C6E8200374101763E1BD5C4555EC586C05B0E5C8C3A96695B9B6077E7FAC3BE"
+    },
+    {
+      "path": "implementation/data/buildGPENMPCNativeTrainingData.m",
+      "bytes": 7933,
+      "sha256": "1CD1222EE9DF1DCD41641A5A0A7FAD16F7397DE2F56B183A327B77B9E8F11C04"
+    },
+    {
+      "path": "implementation/data/gpenmpcAdvanceCausalResidualHistory.m",
+      "bytes": 1556,
+      "sha256": "D4BBB6B091695925DE1B98AEEE7B86A57F78B04EEF70F096042CE1FEE067D804"
+    },
+    {
+      "path": "implementation/data/gpenmpcExtractCausalAeroF17.m",
+      "bytes": 7923,
+      "sha256": "EA1E77F6CBCAF000AEB78EAAE3CA21F1458C6305560C50F42E152037E6317C9B"
+    },
+    {
+      "path": "implementation/data/gpenmpcNormalizedTotalRotorCommand.m",
+      "bytes": 956,
+      "sha256": "EEA71475BEF12B94D691EF91A7F6B1862E3825FF60D60FF77B918578E61C3FC6"
+    },
+    {
+      "path": "implementation/data/gpenmpcPcg64AeroKmeansStream.m",
+      "bytes": 3900,
+      "sha256": "933E84E677C3294F13AC67CC1E0CC675B849ABABBEF704AB7B21D62327133CED"
+    },
+    {
+      "path": "implementation/data/gpenmpcReadNpy.m",
+      "bytes": 3731,
+      "sha256": "2512BD13894A1DB4FD07658C41EE740E886959EFA57ED6E66AF1118548835BF2"
+    },
+    {
+      "path": "implementation/data/gpenmpcReadNpz.m",
+      "bytes": 1452,
+      "sha256": "18D0CBBDE94E548B3FCE873A40447D696CBA6C48EE3F030AE2AE5AD67EFA7F3E"
+    },
+    {
+      "path": "implementation/data/gpenmpcSelectInducingPoints.m",
+      "bytes": 2764,
+      "sha256": "0C2F0A703212A9AF1C4303D4D5630CA9392ABF6098782BA7AD4DA527845094BC"
+    },
+    {
+      "path": "implementation/data/gpenmpcSelectMissionCoverageRows.m",
+      "bytes": 2058,
+      "sha256": "BFDE90911C4821E4F028055CB017818C4841F2D332AFA6D2D334D5261CF3DAC7"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcActualWindAtTime.m",
+      "bytes": 1557,
+      "sha256": "9EFD724DF4CD1FA84BB46FD88C3B892995946F7FDDC9CBE68E55262B4CB0C946"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcAdvanceCompensationState.m",
+      "bytes": 1224,
+      "sha256": "7CE76F4EB7A6DCABEBE2EDB2927F9BD82257E1B07BD1D7C1EA54557361CA6E35"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcAttitudeContinuityProfiles.m",
+      "bytes": 1177,
+      "sha256": "40F5DCB2318A47D3CD8A4A9BE655AE9060267EE331AC78A2C20D181F93B8A3B6"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcClipNorm.m",
+      "bytes": 288,
+      "sha256": "66F963694C9D6BCFC06AF6DABAA8717946734E8A4F81A6912379BF632EF25BEA"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcCommitCausalVerticalDisturbanceObserver.m",
+      "bytes": 682,
+      "sha256": "57BC1C1A1EF846024CF00F505AFA98DB3BAFFA2863DA212928ABF00B14046D9E"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcComposeResidualTarget.m",
+      "bytes": 2350,
+      "sha256": "61E60A3031B3C376EB2990E6AC3A414BFEB8380E22ACE1FCC0D4F5CD475BEF53"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcComputeGpResponsibility.m",
+      "bytes": 2184,
+      "sha256": "DF179A83289708C50EC0B0A1027B26500EC2071959177B82A9BB09630FFF44A3"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcControllerSensitivePower.m",
+      "bytes": 1571,
+      "sha256": "4B1D6CA6F386D7AF468FDFF0894C33F2499B180EDC9E570D386ECB99F802D30A"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcCoordinatedGpRobustSe3Augmentation.m",
+      "bytes": 15752,
+      "sha256": "582CE3E5E20E538C8A74D44EDD0F057955C697603373995DE32C66C3D625B876"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcDesiredSe3Command.m",
+      "bytes": 1765,
+      "sha256": "5A1ADBBD26211BFCDA64559901C56BF349392D8163C62C8034AF8FE6129B1409"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcInitializeDesiredAttitudeContinuityState.m",
+      "bytes": 488,
+      "sha256": "DD863B25CBE01737755FF5B6169299E443E2B1E30AF0EC5C9C6C5EC7110B32AB"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcInitializeRobustSe3State.m",
+      "bytes": 1115,
+      "sha256": "6F0E1DEAB171B883CEAC64B32F95A682FCBB00E17434F46871A3BDECB3028331"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcIntegrateControllerSensitiveEnergy.m",
+      "bytes": 1149,
+      "sha256": "50646021461B3B41F9EFE869C4FB169783F62E76896133E55245613E4CA10DCB"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcKnownNominalAccelerationFromObservation.m",
+      "bytes": 1236,
+      "sha256": "0A5A1680D18E9497BD95B9B9C7E534F5D7DC15A15F26972E0A76D55D64D6C2C4"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcM600Allocation.m",
+      "bytes": 1396,
+      "sha256": "4E6EB58BE8C356E4BAA3DB930CC73ADF35E19E1D1D0A6598D9438F957E989855"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcM600ClosedLoopDerivative.m",
+      "bytes": 1789,
+      "sha256": "29719F6C26982D59AE3CE54D60E21F5C2602EBA56BBC21F1E64E42384F0C226B"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcM600ControllerSensitivePower.m",
+      "bytes": 1854,
+      "sha256": "86B02CDBAFF7309DECB11707989C16A76E17563C029407C41809ED76D99EA78D"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcM600PhasePower.m",
+      "bytes": 2987,
+      "sha256": "C4A47CBCC10065679FECE2C81C1C60DEF9D79BE8DE594001A85C6B1E9DD71ADF"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcM600PreparedPhasePower.m",
+      "bytes": 2409,
+      "sha256": "5C8CD7284A54CD2AEB5A8797C0F65C63437EBAC192F097BBBBE84A06D54E951D"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcM600SixDofPlantDerivative.m",
+      "bytes": 3002,
+      "sha256": "F94DC7121D1E76D70F3CD58F5F53BEFA46CB44AE494B7CDF6DC40F1C6614A32E"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcM600StructuredResidual.m",
+      "bytes": 2869,
+      "sha256": "B44268F1EE52F4C77170D8ADB066CD2AD401B5BECB7E2F00559A3FCE76CBF4FE"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcObserveCausalVerticalDisturbance.m",
+      "bytes": 2455,
+      "sha256": "73961519336F70D9807AE29F800FD2AB222B83D5E5A390DA9EF7EE80B052F38A"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcPrepareM600PhasePowerTable.m",
+      "bytes": 1730,
+      "sha256": "DBAB6A3E2464FFC194870912828C7694C3F75644219C46389A197CE8EDA8417A"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcProjectForce.m",
+      "bytes": 591,
+      "sha256": "F64E89BFBFA7362039960F02D2AA880F3EBBEE9349D1016FD0FFE9DA17EA5DC5"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcQuaternionDerivativeMatrix.m",
+      "bytes": 307,
+      "sha256": "036C0649AA13AC66BB6B5EF09300A3C4273F774203C933E74BCBD695A81F55BA"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcQuaternionRotation.m",
+      "bytes": 396,
+      "sha256": "75F1CFC64EF4733D7728EBBAB98E65E672428C085937B2932BB0CFDCE9F7DF4F"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcReferenceExtrapolation.m",
+      "bytes": 779,
+      "sha256": "E82FE441D3BAAB42490633590D22F5A9C6502657BA55C8C850271C198377FB4D"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcResetCausalVerticalDisturbanceObserver.m",
+      "bytes": 1136,
+      "sha256": "47CA4FA0A726B70FAD3E5ED26D8DA5910347C752CC229687AE1E2236F1D2E485"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcRobustSe3Augmentation.m",
+      "bytes": 2580,
+      "sha256": "586DF6E52F7E36D7CFBAD1BA10FAF826FEB3B2D75C1AC6E611793F9E712466E8"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcRobustSe3Control.m",
+      "bytes": 4200,
+      "sha256": "2DA818ABFF2B942D7938DB64F8999823F7AD29E9149B374612F1A6C67330F562"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcRobustSe3ObserveControl.m",
+      "bytes": 831,
+      "sha256": "245F9FECA4E1F9DB0A08424C1D55959DA823E0078BCA80695E2737657751522D"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcSo3Exp.m",
+      "bytes": 620,
+      "sha256": "8C6BC84778F603EBA40FD00C8126A97A8D51A47E298C4F941F551E4BC066C641"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcSo3LogVee.m",
+      "bytes": 820,
+      "sha256": "C705C302ED59C94D971619193DF57D828D9497A5BD85073D971C371E7FA33419"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcUpdateDesiredAttitudeContinuity.m",
+      "bytes": 6256,
+      "sha256": "4AB4373781E88C0D18C0A5F05120674A4707FE0827055E7FDC17F2A8DB3A4F7D"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcVee.m",
+      "bytes": 149,
+      "sha256": "D984A8B30A49849DFAFB6D347BDA8FAB53B2F6DF6C63E766338348861F325C0C"
+    },
+    {
+      "path": "implementation/dynamics/gpenmpcWindMeasurementBiasAtTime.m",
+      "bytes": 861,
+      "sha256": "58EF7632E4FED6A6705487427B3EE0F9F1F389901BC92A534D9BD55BD0C10052"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcApplyArchitectureConfiguration.m",
+      "bytes": 2008,
+      "sha256": "37B298B22BA49A65D4FE11E443CEA4A512A87B5EB1B2DAEFE806E16D97F43BC0"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcApplyCommandContinuity.m",
+      "bytes": 8841,
+      "sha256": "0EA5E8107B190FC56392002E3B7444929294E831227AE39BD316C3DD74F363C0"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcApplyCommandContinuityConfiguration.m",
+      "bytes": 1843,
+      "sha256": "841703AA41EA1F26640AFDBE157FBF9954E0E80F55FC3E182BE08D19FFBF7A9D"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcApplyCoordinatedGpConfiguration.m",
+      "bytes": 1806,
+      "sha256": "95A81739C4148D57A7FE27D58121A3211233FBC4345204F85B0303320D2C3131"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcApplyResponsibilityConfiguration.m",
+      "bytes": 1323,
+      "sha256": "1A9F5B1C9E9E34FA078AED2BCAF2A42DA9B60B9340986FD13BBEEF88ABED972F"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcBookkeepEnmpcRollout.m",
+      "bytes": 7604,
+      "sha256": "62900E80474A79AF0D17A6A234617EADCD2491B94358818B5BB211F50AA79044"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcBuildAeroF17Features.m",
+      "bytes": 1449,
+      "sha256": "FCD0B792296BF0B4FE77981C5B182CA6DF700B8C6B07B5E11EDC73C1A3D1F15B"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcBuildEnmpcCandidateLibrary.m",
+      "bytes": 5287,
+      "sha256": "B08F0271BEC81FFBE800E30ABDF5164AB5BE1C9A62C8E2ECA84CA8CB4102D4C0"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcBuildEnmpcRefinementCandidates.m",
+      "bytes": 1505,
+      "sha256": "DF84151C3C9FDA515684CD7E6B90CCDF95ABEDE42DDCD84FF1F2A18B5F572D1D"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcCloseGpInnovationEvidence.m",
+      "bytes": 3173,
+      "sha256": "8964E16D9EE80FCF157233D4B5160FBD4E853D1415CE45CE46263439E3AC79EA"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcCoordinatedOuterStep.m",
+      "bytes": 2955,
+      "sha256": "B09E39BBBEBA4C474B5C80AA4A95FA21DCFD3AE900915563EDE81F9E61B2ACB6"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcEnmpcStageControllerSensitivePower.m",
+      "bytes": 1013,
+      "sha256": "5D2F414CA0BC8B0D3CCC31C817B0621B409016B4D6CD8DECCD35056BE394AC83"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcEvaluateOrdinaryB2Rollout.m",
+      "bytes": 30188,
+      "sha256": "759711D8AD310B86D192C34974DE6FFB0C804722197CC18243950EF118E967D5"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcEvaluatePreparedTrajectoryJet.m",
+      "bytes": 1095,
+      "sha256": "5DE7F86557640F10BDDCAEBF55846F75D8F870072E5EE34E99C6038B425A3958"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcEvaluateShadowGpSupport.m",
+      "bytes": 8835,
+      "sha256": "2E154033C90F6582BAC3BE731C1E5285A70B00523FB217D2CAC23170253C49C8"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcEvaluateTrajectoryDerivative.m",
+      "bytes": 2686,
+      "sha256": "2EB33AFC4DFC300FE8B9C43E96755866613FD784E5928D7ECFB4E8DFEE88FA78"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcFrenetFrame.m",
+      "bytes": 1017,
+      "sha256": "21EB1A5E75A4A8C868AC59C0AFB7AB7068E69C4F41B9E0921B5A52806690131F"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcInitializeCommandContinuity.m",
+      "bytes": 1089,
+      "sha256": "B9456BEB48102209B490FDA9F45AC0D8662F0E0D91790B94CCB6E207BAF92B5D"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcInitializeOuterSupervisor.m",
+      "bytes": 2437,
+      "sha256": "08D2A8B58EB49204AA8178DF5ABB90031B1BB127E9A97202A4E51E0F650E5D09"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcJerkBoundedReferenceTransition.m",
+      "bytes": 4421,
+      "sha256": "BDB573CDBFE5C87F9FB35794C228AB338D030001A6BF9988F0D1772779BF1193"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcLiftB1FallbackDecision.m",
+      "bytes": 1455,
+      "sha256": "14DA26C16EF13E4C6E45DF297F3CCDEDF06BFE45E56C405120099079F6C619D0"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcLoadOrdinaryB2Config.m",
+      "bytes": 17439,
+      "sha256": "054B52DB01D6F8A66B4A2A6E3CEB567CF361C1FEF6DF1DC3F67524DC6794825E"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcObserveSupervisorEvent.m",
+      "bytes": 1637,
+      "sha256": "2CF286B48547AF1E99DF100AA5C6FB32769DB9C60122C3710837851CBE51B0BA"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcOrdinaryB2Identity.m",
+      "bytes": 1518,
+      "sha256": "8BE5A5F2EAD8BEE9D316393D7A59E054D05CD51E6FA22EB62D1FA85707103FE3"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcOrdinaryB2OuterStep.m",
+      "bytes": 2157,
+      "sha256": "E4DC72E58C9EBB7B333FBC076F13C61B10E88FB453DADA25993CC5168E7EA4FF"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcOuterSupervisorRequest.m",
+      "bytes": 5477,
+      "sha256": "7B384F9BB574BDBB5AF1A275C2FAC492C34FF099A603F156E99B3BB7059E8872"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcOuterSupervisorStep.m",
+      "bytes": 23360,
+      "sha256": "5E1446CDCD6F49FA4A15BB7E601065D6E5BF31E54E8562479E434D9B38ED8E6C"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcPhaseReference.m",
+      "bytes": 997,
+      "sha256": "16E41D410F360F69B80654EC3CB1613B1A36C76CB65D28B0B5AFE74368910360"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcPredictCurrentGpEvidence.m",
+      "bytes": 3408,
+      "sha256": "E83B76BB325C3E18E48F441401CAEDE3468D0669F11EC8A2BEEC1866A227F466"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcPrepareTrajectoryDerivatives.m",
+      "bytes": 1466,
+      "sha256": "D5E2309E110FD2247D4ED2B6DE44BB53D1B9B613531AE91C2243A08824B94650"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcSelectEnmpcCandidate.m",
+      "bytes": 10804,
+      "sha256": "2EFA280B29C203A141B5ACD9991950F0896DB1774A70AEE8A97E1F64124CD911"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcShiftEnmpcWarmStart.m",
+      "bytes": 739,
+      "sha256": "088DC6B738FA6E511FB284EF33A70F78B50DC289D414C169FB0ED01BF69A214F"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcSolveOrdinaryB2FiniteShooting.m",
+      "bytes": 15420,
+      "sha256": "AE2C3D07D5E2E53B01B8E4E03D373E0EA27E9D7FD3E3C5461AF81EC118FDC7CA"
+    },
+    {
+      "path": "implementation/enmpc/gpenmpcUpdateGpAgreementWeight.m",
+      "bytes": 4040,
+      "sha256": "494375CE3071F52991B8A14D81504809EEA6B0EB8F092A5D6539373E96089827"
+    },
+    {
+      "path": "implementation/inference/gpenmpcPrepareSparseGpModel.m",
+      "bytes": 827,
+      "sha256": "58739657174294C98FE6BF594D2EF03201134B716BA08C08D5F2C2FF5865518A"
+    },
+    {
+      "path": "implementation/inference/gpenmpcSmoothGate.m",
+      "bytes": 460,
+      "sha256": "04EEFBD7A005DD9F3D2FD753125381C789DF94DBE1FD88D3CD86DAA1670C3B4D"
+    },
+    {
+      "path": "implementation/inference/gpenmpcSparseGpPredict.m",
+      "bytes": 4009,
+      "sha256": "9E7C43B7D70FDDBC676128E4BF6B7ADEE5E22250C640C7489172E6D5D4B5B1CA"
+    },
+    {
+      "path": "implementation/inference/runPythonMatlabInferenceParity.m",
+      "bytes": 3280,
+      "sha256": "5C24B3BCFF89603AB3F74AAE026BF011DBC320E6188648D490416A78DD4D33BE"
+    },
+    {
+      "path": "implementation/native_training/raw/MATLAB_NATIVE_SPARSE_GP_MODEL.mat",
+      "bytes": 1808964,
+      "sha256": "4A09E9A3D4818B5555CD3439A6D2133026EEA0FDC2774A1FB17F9E05486E5BB2"
+    },
+    {
+      "path": "implementation/simulink/assets/aero_gp_runtime_configuration.json",
+      "bytes": 3665,
+      "sha256": "2A2D63660B0E88EBF8EA2231FB27DAE4D101631CA55CD015D31E79C9810E0746"
+    },
+    {
+      "path": "implementation/simulink/assets/enmpc_runtime_configuration.json",
+      "bytes": 5218,
+      "sha256": "C65AC1DE89576E9BB5BEBB308D38F0D2910B2609AF7AF3FAB8D640F0FD404DCA"
+    },
+    {
+      "path": "implementation/simulink/assets/M600_DYN_CALIBRATION.json",
+      "bytes": 3947,
+      "sha256": "710DB410B59E746D711798775A3F061EB1F6188E9306E70E919C7C6F75EBCBB3"
+    },
+    {
+      "path": "implementation/simulink/assets/M600_PLATFORM_PROFILE.json",
+      "bytes": 6171,
+      "sha256": "7C0DFE3F3FC01F58653A0B1C6C87AD1946C571238112E85F40BA34B225355FEA"
+    },
+    {
+      "path": "implementation/simulink/buildGPENMPCNativeSixDofClosedLoop.m",
+      "bytes": 4681,
+      "sha256": "46C34FED1AF9BD784C7C25506359C2215C0A3F10B110074E1B161DEA5D377C35"
+    },
+    {
+      "path": "implementation/simulink/gpenmpcBuildOnlineF17.m",
+      "bytes": 2483,
+      "sha256": "AEDB1C0698F7A9E2A0B2E9BC867541D15E39EA033DA267D78B8C3F2275E30584"
+    },
+    {
+      "path": "implementation/simulink/gpenmpcNativeHarnessAssets.m",
+      "bytes": 1877,
+      "sha256": "07C6F850B202CA25B5078BB0E8E6C8A905E0CA25EACBF631E0C229737D53E01A"
+    },
+    {
+      "path": "implementation/simulink/gpenmpcNativeHarnessMission.m",
+      "bytes": 1810,
+      "sha256": "F8E3309A67B4FEC4AA8EC7D21B1ECDD8167480F72748D4D3140053A2E7C164B0"
+    },
+    {
+      "path": "implementation/simulink/gpenmpcNativeHarnessOuterStep.m",
+      "bytes": 6685,
+      "sha256": "FA5A93820C833C9D60932233042DDC58DB3894A6219205D0F82C0833F5DA74E2"
+    },
+    {
+      "path": "implementation/simulink/gpenmpcNativeInnerPlantSfun.m",
+      "bytes": 8965,
+      "sha256": "1575C1E4EFB08EA6C94F8C30181FFA2A3F1019974CF0500E80EA99E2F7122670"
+    },
+    {
+      "path": "implementation/simulink/gpenmpcNativeOuterLoopSfun.m",
+      "bytes": 5272,
+      "sha256": "D90102E4CA7C1439AC443143A0BA6E0054B137E7827805A6A57DC1CC27DEDB5A"
+    },
+    {
+      "path": "implementation/simulink/gpenmpcNativeReferenceSfun.m",
+      "bytes": 1540,
+      "sha256": "CA81B4E8889ED2C78A1B91BAA2888067C51861632B7B347E286AAF82921E47DE"
+    },
+    {
+      "path": "implementation/tests/fixtures/ordinary_b2_rollout_python_reference.json",
+      "bytes": 40820,
+      "sha256": "584102E94A4034B8DE3E4BFC9ED5A216743900D973E8780B3F485B4A1E282194"
+    },
+    {
+      "path": "implementation/tests/helpers/gpenmpcEvaluateOrdinaryB2RolloutLegacyBaseline.m",
+      "bytes": 20356,
+      "sha256": "E06D6E20F694379BEFB9EAAEFD5354E962F55459B8AE44D9A82DE1E16DED2C3D"
+    },
+    {
+      "path": "implementation/tests/runArchitectureConsistencyTests.m",
+      "bytes": 7618,
+      "sha256": "74A3B90BE52E1D98077513C895C30BF99423D9A5B47020832DC217EDC15468E4"
+    },
+    {
+      "path": "implementation/tests/runB2SustainedPrefix.m",
+      "bytes": 2306,
+      "sha256": "0E30189631706165A75E1D69CF7F29FDBDBCD1C131C903702BCD5F7FC818B0EC"
+    },
+    {
+      "path": "implementation/tests/runCausalVerticalObserverTests.m",
+      "bytes": 6336,
+      "sha256": "B89D5B4102675DD3F1F1022317E3CD8D006B0878443E9A8A834629D409E0FE60"
+    },
+    {
+      "path": "implementation/tests/runCommandContinuityTests.m",
+      "bytes": 9114,
+      "sha256": "33FCFEB68ABED1A3CCC802336F7853669B42AA61E3B03D9D67ECAF651D5C39F9"
+    },
+    {
+      "path": "implementation/tests/runCoordinatedGpExecutionTests.m",
+      "bytes": 10405,
+      "sha256": "F13E87E2DDB3F49A4ADA9C52B46AE01DA04953A379731A286F416A4253A0037E"
+    },
+    {
+      "path": "implementation/tests/runDesiredAttitudeContinuityTests.m",
+      "bytes": 12221,
+      "sha256": "6EE251AA5F8E99D57670A210A528ECB059A14405CAEFA1CD4F92EB582A1F9562"
+    },
+    {
+      "path": "implementation/tests/runDisturbedDevelopmentFocusedSmoke.m",
+      "bytes": 5435,
+      "sha256": "F973922B88B7ACB4EA0C6780F34D20EFA9DDC6D5DEEAC77811E865C6B944619E"
+    },
+    {
+      "path": "implementation/tests/runExecutionAlignmentTests.m",
+      "bytes": 6621,
+      "sha256": "C9A64746696AE8B260BEE82D3D2429FCBBA4D01CBC3BDE6C288EB61670F78A25"
+    },
+    {
+      "path": "implementation/tests/runGpPredictionResponsibilityTests.m",
+      "bytes": 8670,
+      "sha256": "B0B4A9D9D1A69B2FA57423EBA72643B54C5B5EB915BD8C53FF9DA851062254B2"
+    },
+    {
+      "path": "implementation/tests/runIndependentDevelopmentTaskLoaderTests.m",
+      "bytes": 2395,
+      "sha256": "439E1975FBDD2DA14C3DB5D093CD0BFC7A386B2D56B3EF265775755AC0B89A9F"
+    },
+    {
+      "path": "implementation/tests/runInferenceAndSolverEquivalence.m",
+      "bytes": 6616,
+      "sha256": "3583A7A5D5A778115DF5316E98BA9B8E208C971079A48132DFB839E773828445"
+    },
+    {
+      "path": "implementation/tests/runNativeComparisonInputIdentity.m",
+      "bytes": 2250,
+      "sha256": "1F299D118A807E3B77493AFFCA617DD6F7391618A4E69CBD716FEDF61AD944B4"
+    },
+    {
+      "path": "implementation/tests/runNativeDataParity.m",
+      "bytes": 929,
+      "sha256": "77BC4ED8C0C040331A760B1DDE76D123AF581D19E0BDA4E96B3F73C0D5F84249"
+    },
+    {
+      "path": "implementation/tests/runNativeEnmpcCoreTests.m",
+      "bytes": 13754,
+      "sha256": "68FD968A33C2857ECD71AF7ABFE742EE8A88C6474BEA5ABD005736F4BC3D8F84"
+    },
+    {
+      "path": "implementation/tests/runNativeFixedC3FocusedClosedLoop.m",
+      "bytes": 6734,
+      "sha256": "F210DE4D072DA6AA712AC3056DA785124DDC9BC025D42AB441F912EA21B3C400"
+    },
+    {
+      "path": "implementation/tests/runNativeInducingParity.m",
+      "bytes": 1736,
+      "sha256": "65225F2D1DDF8828AB1E0227CFD7E8AEA877CD44206D591DF75EF663417D74C9"
+    },
+    {
+      "path": "implementation/tests/runNativeOrdinaryB2RolloutParity.m",
+      "bytes": 7162,
+      "sha256": "538308CF3BC55AF12A61E1959F2644857BCB620CD657C8272057E14E828292FF"
+    },
+    {
+      "path": "implementation/tests/runNativeSe3PlantPowerTests.m",
+      "bytes": 11810,
+      "sha256": "3C6EDB81E0F1905CCBA47EFC68F4B33E1464B975E09C1C3E0AC4D66FB5E190D5"
+    },
+    {
+      "path": "implementation/tests/runNativeSimulinkHarnessTests.m",
+      "bytes": 4752,
+      "sha256": "F47059C93A5400C2FCBA60E79E42BBD09A2D9FC9C4A42DF22575C2651D609B58"
+    },
+    {
+      "path": "implementation/tests/runNativeSparseGpTrainingParity.m",
+      "bytes": 11465,
+      "sha256": "4227AF3BDF48B9AEB553B77789A1107AC464DF2AD415431EFBBE9560824133B8"
+    },
+    {
+      "path": "implementation/tests/runNativeUnifiedRunnerFocusedSmoke.m",
+      "bytes": 2319,
+      "sha256": "C3911AF7D86ED446ECB09F59E571BFDF90EA49AF99F2FAD00A021A83476459A3"
+    },
+    {
+      "path": "implementation/tests/runNoDisturbanceFocusedDiagnostic.m",
+      "bytes": 6201,
+      "sha256": "E571153D27CE9F6C19B63B0E3664C3E30CA4420C7218AC3DFEE12B82BD50CE9F"
+    },
+    {
+      "path": "implementation/tests/runNoDisturbanceNominalContractTests.m",
+      "bytes": 2367,
+      "sha256": "6BDB20DAF6B3288CA6627EDBEB55076170936A7054B836EC7D66DFA829F0564C"
+    },
+    {
+      "path": "implementation/tests/runOuterPreparedTrajectoryEquivalence.m",
+      "bytes": 4847,
+      "sha256": "908A9A2A9149B83C3C70532E46BE52EA2121BF7A7D1284F5E747141A23E71F33"
+    },
+    {
+      "path": "implementation/tests/runOuterSupervisorTests.m",
+      "bytes": 10849,
+      "sha256": "989DC5C9838C98061C0B635D58A1F1F5B2B14C19AF1E1F96FDCE62C0F4501AEF"
+    },
+    {
+      "path": "implementation/tests/runOuterTimingEquivalence.m",
+      "bytes": 3475,
+      "sha256": "99CEC0F094E6DCF72A3432DB98CBE1DC5250371993AD9ADA0D8B70ED5BF2E410"
+    },
+    {
+      "path": "implementation/tests/runPredictionEffectiveCommitTests.m",
+      "bytes": 4554,
+      "sha256": "9229679D6058587AE400859A02884CCB41DB62B44F3566E8B004DA73531DEEC8"
+    },
+    {
+      "path": "implementation/tests/runPreparedPowerTableEquivalence.m",
+      "bytes": 3138,
+      "sha256": "F4C49ED7C9EB101FBC05E4DB2B6C482E24FE86162B0537B7EDF43FCD23BB91D3"
+    },
+    {
+      "path": "implementation/tests/runPreparedTrajectoryEquivalence.m",
+      "bytes": 3051,
+      "sha256": "98A5CA7609ECAAD4F9E97E54CAA7FE6E7586280BD37D36049B8AFA1821AF9557"
+    },
+    {
+      "path": "implementation/tests/runReferenceTransitionEquivalence.m",
+      "bytes": 5708,
+      "sha256": "303B3805886E0A2837FCE0111A27141D3D0DA09095610316A625113544D714D7"
+    },
+    {
+      "path": "implementation/tests/runResponsibilityAlignmentTests.m",
+      "bytes": 12018,
+      "sha256": "D34C74AAF9B17AEBA2C7343F94E2FAE8408B672BAA49AB5D485DE17C244CBFDA"
+    },
+    {
+      "path": "implementation/tests/runShadowReentryFocusedTests.m",
+      "bytes": 20893,
+      "sha256": "996A992FD9B52477F87DAA5B6C6F2F62FDC518431F4EF751E20E0F29A5BAC7C8"
+    },
+    {
+      "path": "implementation/tests/runShadowReentryTestSuite.m",
+      "bytes": 1186,
+      "sha256": "0E257693AEA4236D76B8B4AC4F51BA7DEB09A1DC7B0042EE799B0FFE9273FE08"
+    },
+    {
+      "path": "implementation/tests/runSupervisorContinuityTests.m",
+      "bytes": 6659,
+      "sha256": "EECFBEDBE051640317B30BF0BE2816ABA3387F4B08FBD6A3C701B92749C7B4A2"
+    },
+    {
+      "path": "implementation/training/gpenmpcArdRbfKernel.m",
+      "bytes": 465,
+      "sha256": "2D52254737D8A9B77CD80034574D06951807F6ADA01DF03B70A7D420B666C04F"
+    },
+    {
+      "path": "implementation/training/gpenmpcCollapsedSparseVfeLoss.m",
+      "bytes": 811,
+      "sha256": "0932014A804C1A18B4EC4CF752A0B5D1796D732D3EB8509B542DB07BF681FD5C"
+    },
+    {
+      "path": "implementation/training/gpenmpcCollapsedSparseVfeLossAndGradients.m",
+      "bytes": 1802,
+      "sha256": "88D3B9E9E634563ABE02FA765BF7243043E0987A3FEFCDC58D0CE1430E4D38D1"
+    },
+    {
+      "path": "implementation/training/gpenmpcCollapsedSparseVfeObjectiveAdjoints.m",
+      "bytes": 3927,
+      "sha256": "BCA27F341E5B1EFB0117A31118F833C9DE32C60FA97C42BC7DADB488DB3C99E3"
+    },
+    {
+      "path": "implementation/training/testGPENMPCSparseVfeAutodiff.m",
+      "bytes": 3839,
+      "sha256": "1DB6D90748425D2CEC1398F23A66AF1FD2BBA2D94FC4EFB308B4E08AD4FFF0E7"
+    },
+    {
+      "path": "implementation/training/trainGPENMPCSparseGpNative.m",
+      "bytes": 20679,
+      "sha256": "33F9EA7C059B4E687F25FC66572686D8C4F03C2D3BF1864CE5896F4343B9A420"
+    },
+    {
+      "path": "implementation/utilities/gpenmpcExternalPath.m",
+      "bytes": 665,
+      "sha256": "6E34AA89C45E0B4B59B950F18DA4B8377B13AB47BC02C7D5AA1873084D297DF2"
+    }
+  ]
+}

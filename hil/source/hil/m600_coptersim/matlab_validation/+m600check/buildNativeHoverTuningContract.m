@@ -1,0 +1,56 @@
+function [contract,validation]=buildNativeHoverTuningContract()
+% Pure HOST assembly. No files written and no device/parameter operation.
+contract=struct();validation=struct('passed',false,'failure','','errors',{{}});
+try
+    b=gpenmpc_external_path('host_build_root');
+    p=gpenmpc_external_path('m600_model_validation_root');
+    current=gpenmpc_external_path('native_position_parameter_receipt');r=jsondecode(fileread(current));
+    attitude=fullfile(gpenmpc_external_path('host_native_attitude_candidate'),'CANDIDATE.json');a=jsondecode(fileread(attitude));
+    selection=fullfile(gpenmpc_external_path('host_native_takeoff_cascade_sil'),'PROSPECTIVE_SELECTION.json');s=jsondecode(fileread(selection));
+    raw=jsondecode(fileread(r.raw_receipt.path));names={'MC_ROLL_P','MC_PITCH_P','MPC_THR_HOVER'};
+    entries=repmat(struct('name','','mav_type',9,'original_raw_bits_hex','','target_raw_bits_hex',''),3,1);
+    for k=1:2
+        q=a.selection.parameter_changes(k);entries(k)=struct('name',q.name,'mav_type',q.mav_type, ...
+            'original_raw_bits_hex',q.original_raw_bits_hex,'target_raw_bits_hex',q.candidate_raw_bits_hex);
+    end
+    entries(3)=struct('name',names{3},'mav_type',9,'original_raw_bits_hex',s.selection.original_hover_raw_bits, ...
+        'target_raw_bits_hex',s.selection.selected_hover_raw_bits);
+    rows=raw.diagnostic_parameter_observations;keep=~ismember({rows.name},names);guards=typedEntries(rows(keep));
+    outputs=raw.parameters;og=repmat(struct('name','','mav_type',0,'raw_bits_hex',''),numel(outputs),1);
+    for k=1:numel(outputs),q=outputs(k);og(k)=struct('name',q.name,'mav_type',q.mav_type,'raw_bits_hex',q.raw_bits_hex);end
+    refs=[a.script_identity;a.input_bindings(:);s.script;s.numerical_sources(:)];
+    [~,j]=unique(lower(string({refs.path})),'stable');refs=refs(j);
+    consumed=identity(fullfile(gpenmpc_external_path('host_native_takeoff_cascade_sil'),'CONSUMED_RUNNER.m'));
+    resolution=struct('declared',s.script,'consumed',consumed, ...
+        'reason','STORAGE_LOCATION_ONLY__IDENTICAL_CONSUMED_BYTES_AND_SHA__ORIGINAL_DECLARATION_PRESERVED');
+    which=find(strcmp({refs.path},s.script.path));assert(isscalar(which),'m600check:TuningSourceResolution');
+    refs(which)=consumed;
+    contract=struct('schema','TEMPORARY_M600_NATIVE_HOVER_TUNING_V1','entries',entries, ...
+        'bindings',struct('current138',identity(current),'current138_raw',identity(r.raw_receipt.path), ...
+            'attitude_candidate',identity(attitude),'ground_selection',identity(selection)), ...
+        'source_provenance',refs,'source_provenance_resolution',resolution, ...
+        'unchanged_guard_entries',guards,'output_guard_entries',og, ...
+        'maximum_apply_passes',1,'restore_policy','IDEMPOTENT_PER_OWNER_AFTER_DISARM_ZERO_OUTPUTS', ...
+        'fresh_premutation_original138_required',true,'single_send_with_ACK_and_fresh_typed_readback',true, ...
+        'rollback_all_three_exact_original_bits',true,'parameter_attempts_recorded_before_send',true, ...
+        'geometry12_accounting_separate',true,'geometry67_guards_unchanged',true, ...
+        'guard_scope','PREMUTATION_ORIGINAL138__ACTIVE_UNION_REQUIRES_SEPARATE_GEOMETRY12_CONTRACT', ...
+        'active_union_rule','Exact disjoint geometry12 plus tuning3 only; remaining123 unchanged. Never silently exempt 3 values from geometry67.', ...
+        'failure_detector_changes',0,'output_mapping_changes',0,'model_changes',0,'rate_I_changes',0, ...
+        'controller_method_family_changes',0,'MPC_USE_HTE_required',1,'no_route_hover_I_target',0, ...
+        'engineering_margin_is_safety_gate',false,'authority_granted',false, ...
+        'claim','HOST_ONLY_PARAMETER_CONTRACT__NOT_LIVE_AUTHORIZATION_OR_HOVER_PASS');
+    validation=m600check.validateNativeHoverTuningContract(contract);
+catch e
+    validation.failure=[e.identifier ': ' e.message];validation.errors={struct('identifier',e.identifier,'message',e.message)};
+end
+end
+function e=typedEntries(rows)
+e=repmat(struct('name','','mav_type',0,'raw_bits_hex',''),numel(rows),1);
+for k=1:numel(rows),q=rows(k).typed_value;e(k)=struct('name',q.name,'mav_type',q.mav_type,'raw_bits_hex',q.raw_bits_hex);end
+end
+function id=identity(file)
+file=char(file);f=fopen(file,'rb');assert(f>=0,'m600check:HoverTuningMissingFile');g=onCleanup(@()fclose(f)); %#ok<NASGU>
+b=fread(f,Inf,'*uint8');d=java.security.MessageDigest.getInstance('SHA-256');d.update(b);
+id=struct('path',file,'bytes',numel(b),'sha256',upper(reshape(dec2hex(typecast(d.digest(),'uint8'),2).',1,[])));
+end

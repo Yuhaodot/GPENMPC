@@ -1,0 +1,43 @@
+function result=run_hil_sensor_rotation_oracle_tests(outputPath)
+% Test the 30-channel sensor-wire helper independently.
+assert(~isfile(outputPath));b=fileparts(fileparts(mfilename('fullpath')));
+addpath(fullfile(b,'matlab_validation'),fullfile(b,'m600_coptersim','matlab_validation'));
+p=struct('SENS_BOARD_ROT',0,'SENS_BOARD_X_OFF',6.445373058319092, ...
+    'SENS_BOARD_Y_OFF',-6.442468166351318,'SENS_BOARD_Z_OFF',0);
+c=m600check.buildBoardImuInstallationRotation(p);L=c.sensor_to_body;
+rs=RandStream('mt19937ar','Seed',250906);n=256;source=randn(rs,30,n);
+passthrough=[1,11:30];errors=zeros(3,n);matrixErrors=zeros(1,n);unchanged=true;inverseErrors=zeros(3,n);
+for k=1:n
+    [wire,actualL]=m600check.encodeHilSensorLevelFrame(source(:,k));
+    matrixErrors(k)=norm(actualL-L,'fro');
+    for vector=1:3
+        ii=(2:4)+3*(vector-1);errors(vector,k)=norm(L*wire(ii)-source(ii,k));
+        inverseErrors(vector,k)=norm(wire(ii)-L.'*source(ii,k));
+    end
+    unchanged=unchanged&&isequal(typecast(wire(passthrough),'uint64'),typecast(source(passthrough,k),'uint64'));
+end
+special=(1:30).';bits=typecast(special,'uint64');
+bits(1)=bitshift(uint64(1),63); % -0
+bits(11)=bitor(bitshift(uint64(hex2dec('7FF80000')),32),uint64(hex2dec('00000123'))); % quiet NaN payload
+bits(12)=bitshift(uint64(hex2dec('7FF00000')),32); % +Inf remains pass-through, not made finite
+special=typecast(bits,'double');[swire,~]=m600check.encodeHilSensorLevelFrame(special);
+nonfinite=source(:,1);nonfinite(2)=NaN;nfwire=m600check.encodeHilSensorLevelFrame(nonfinite);
+names={'L_matches_independent_Rz_Ry_Rx_oracle','256_specific_force_recalibrations_equal_body', ...
+    '256_gyro_recalibrations_equal_body','256_mag_recalibrations_equal_body', ...
+    'all_nine_raw_channels_equal_independent_inverse','all_21_other_channels_bitwise_unchanged', ...
+    'signed_zero_NaN_payload_Inf_passthrough_bits_preserved','invalid_sensor_value_not_sanitized_to_finite'};
+checks=[max(matrixErrors)<1e-14,all(errors(1,:)<1e-12),all(errors(2,:)<1e-12), ...
+    all(errors(3,:)<1e-12),all(inverseErrors<1e-12,'all'),unchanged, ...
+    isequal(typecast(swire(passthrough),'uint64'),bits(passthrough)),any(~isfinite(nfwire(2:4)))];
+result=struct('passed',all(checks),'checks_total',numel(checks),'checks_passed',sum(checks), ...
+    'checks',struct('name',names,'passed',num2cell(checks)), ...
+    'samples',n,'vector_recalibration_comparisons',3*n,'pass_through_bit_comparisons',21*n, ...
+    'maximum_matrix_error',max(matrixErrors),'maximum_recalibration_error_per_sensor',max(errors,[],2), ...
+    'matrix_oracle','Independent buildBoardImuInstallationRotation.m, itself cross-checked with quaternion composition', ...
+    'mag_source','PX4 sensor_calibration/Magnetometer.cpp set_rotation: level adjustment multiplied before board rotation; integration requires exact verified SIMULATION instance identity', ...
+    'sensor_helper_only',true,'plant_truth_modified',false,'DLL_built',false, ...
+    'COM_open',0,'UDP_open',0,'board_actions',0,'simulator_started',0);
+fid=fopen(outputPath,'w','n','UTF-8');assert(fid>=0);cleanup=onCleanup(@()fclose(fid));
+fprintf(fid,'%s\n',jsonencode(result,PrettyPrint=true));clear cleanup
+disp(jsonencode(result));assert(result.passed);
+end

@@ -1,0 +1,106 @@
+function report=validateTemporaryAllocatorGeometryEntries(entries,audit,native79,guards)
+% Pure data validation; no file, socket, parameter, model or process actions.
+report=struct('passed',false,'failure','','errors',{{}},'entries',[], ...
+    'unchanged_guard_entries',[],'native_parameter_count',0,'hardware_actions',0);
+try
+    expected={};for i=0:5,for a={'X','Y'},expected{end+1}=sprintf('CA_ROTOR%d_P%s',i,a{1});end;end %#ok<AGROW>
+    assert(isstruct(entries)&&numel(entries)==12&&all(isfield(entries, ...
+        {'name','mav_type','original_raw_bits_hex','target_raw_bits_hex'})), ...
+        'm600check:GeometryEntries','Exactly twelve explicit REAL32 geometry entries required.');
+    names=arrayfun(@(x)char(x.name),entries,'UniformOutput',false);
+    assert(numel(unique(names))==12&&isequal(sort(names(:)),sort(expected(:))), ...
+        'm600check:GeometryEntries','Only unique CA_ROTOR0..5_PX/PY entries allowed.');
+    assert(isstruct(audit)&&isscalar(audit)&&isfield(audit,'schema')&& ...
+        strcmp(audit.schema,'HOST_M600_NATIVE_ROTOR_GEOMETRY_AUDIT_V1')&&yes(audit.passed)&& ...
+        yes(audit.candidate_geometry_aligned)&&yes(audit.actual_yaw_sign_matches)&& ...
+        yes(audit.actual_collective_thrust_matches)&&zero(audit.hardware_actions)&& ...
+        zero(audit.flight_admission)&&finite(audit.candidate_alignment_max_abs)&& ...
+        finite(audit.numerical_real32_alignment_tolerance)&&audit.numerical_real32_alignment_tolerance>0&& ...
+        audit.candidate_alignment_max_abs<=audit.numerical_real32_alignment_tolerance, ...
+        'm600check:GeometryMathProof','Accepted static geometry proof required; not a live PASS.');
+    assert(isstruct(native79)&&isscalar(native79)&& ...
+        strcmp(native79.schema,'M600_CANONICAL_SERIAL_READONLY_SAFETY_V1')&&yes(native79.passed)&& ...
+        yes(native79.diagnostic_parameters_complete)&&zero(native79.parameter_writes)&& ...
+        zero(native79.mapping_writes)&&zero(native79.arm_disarm_mode_requests)&& ...
+        zero(native79.flash_reboot_count)&&zero(native79.physical_output_actions), ...
+        'm600check:GeometryNativeReceipt','Complete read-only native receipt required.');
+    rows=native79.diagnostic_parameter_observations;
+    assert(isstruct(rows)&&numel(rows)==79,'m600check:GeometryNativeCount','Require exact 79 diagnostic rows.');
+    rn=arrayfun(@(x)char(x.name),rows,'UniformOutput',false);expected79=allNames();
+    assert(numel(unique(rn))==79&&isequal(sort(rn(:)),sort(expected79(:))), ...
+        'm600check:GeometryNativeNames','Native79 exact diagnostic set differs.');
+    clean=repmat(struct('name','','mav_type',0,'raw_bits_hex',''),79,1);
+    for k=1:79
+        assert(isempty(rows(k).read_error)&&zero(rows(k).write_count), ...
+            'm600check:GeometryNativeRead','Native read error or write present.');
+        clean(k)=typedRow(rows(k).typed_value);
+        assert(strcmp(clean(k).name,rn{k}),'m600check:GeometryNativeName','Nested typed name differs.');
+    end
+    delta=audit.proposed_parameter_delta;
+    assert(isstruct(delta)&&numel(delta)==12,'m600check:GeometryAuditDelta','Require twelve audit deltas.');
+    dn=arrayfun(@(x)char(x.name),delta,'UniformOutput',false);
+    assert(numel(unique(dn))==12&&isequal(sort(dn(:)),sort(expected(:))), ...
+        'm600check:GeometryAuditDelta','Audit delta names differ.');
+    normalized=repmat(struct('name','','mav_type',9,'original_raw_bits_hex','','target_raw_bits_hex',''),12,1);
+    for k=1:12
+        name=expected{k};p=entries(strcmp(names,name));d=delta(strcmp(dn,name));n=clean(strcmp(rn,name));
+        assert(isequal(double(p.mav_type),9)&&isequal(double(d.mav_type),9)&&n.mav_type==9, ...
+            'm600check:GeometryEntryType','Geometry entry is not REAL32.');
+        original=bits(p.original_raw_bits_hex);target=bits(p.target_raw_bits_hex);
+        assert(isfinite(real32(original))&&isfinite(real32(target)), ...
+            'm600check:GeometryNonfinite','Geometry original/target must be finite.');
+        assert(strcmp(original,n.raw_bits_hex)&&strcmp(original,bits(d.original_raw_bits_hex))&& ...
+            strcmp(original,bits(d.rollback_raw_bits_hex))&&strcmp(target,bits(d.candidate_raw_bits_hex)), ...
+            'm600check:GeometryDeltaBinding','Original/target/rollback bits do not match actual audit and native receipt.');
+        assert(isfinite(d.original_value)&&isfinite(d.candidate_value)&&isfinite(d.rollback_value)&& ...
+            double(real32(original))==double(d.original_value)&& ...
+            double(real32(original))==double(d.rollback_value)&&double(real32(target))==double(d.candidate_value), ...
+            'm600check:GeometryNumericBits','Audit numeric values do not match REAL32 bits.');
+        normalized(k)=struct('name',name,'mav_type',9,'original_raw_bits_hex',original,'target_raw_bits_hex',target);
+    end
+    expectedGuards=clean(~ismember(rn,expected));
+    assert(isstruct(guards)&&numel(guards)==67,'m600check:GeometryGuards','Require all 79 minus 12 unchanged entries.');
+    gn=arrayfun(@(x)char(x.name),guards,'UniformOutput',false);
+    assert(numel(unique(gn))==67&&isequal(sort(gn(:)),sort({expectedGuards.name}.')), ...
+        'm600check:GeometryGuards','Unchanged guards missing, duplicated or expanded.');
+    auditedGuards=audit.unchanged_diagnostic_parameters;
+    assert(isstruct(auditedGuards)&&numel(auditedGuards)==67,'m600check:GeometryAuditGuards','Audit must retain 67 unchanged rows.');
+    an=arrayfun(@(x)char(x.name),auditedGuards,'UniformOutput',false);
+    assert(numel(unique(an))==67&&isequal(sort(an(:)),sort(gn(:))), ...
+        'm600check:GeometryAuditGuards','Audited guard names differ.');
+    for k=1:67
+        n=expectedGuards(k);g=typedRow(guards(strcmp(gn,n.name)));
+        ar=auditedGuards(strcmp(an,n.name));a=typedRow(ar.typed_value);
+        assert(isempty(ar.read_error)&&zero(ar.write_count)&&isequal(g,n)&&isequal(a,n), ...
+            'm600check:GeometryGuardIdentity','A CT/KM/axis/profile/gain/FD guard differs.');
+    end
+    report.entries=normalized;report.unchanged_guard_entries=expectedGuards;report.native_parameter_count=79;report.passed=true;
+catch p
+    report.failure=[p.identifier ': ' p.message];report.errors={struct('identifier',p.identifier,'message',p.message)};
+end
+end
+function r=typedRow(p)
+assert(isstruct(p)&&isscalar(p)&&all(isfield(p,{'name','mav_type','raw_bits_hex'})), ...
+    'm600check:GeometryTypedRow','Missing typed guard fields.');
+name=char(p.name);t=double(p.mav_type);h=bits(p.raw_bits_hex);
+assert(isscalar(t)&&ismember(t,[5 6 9]),'m600check:GeometryTypedRow','Unsupported MAVLink parameter type.');
+u=uint32(hex2dec(h));if t==9,v=double(typecast(u,'single'));elseif t==6,v=double(typecast(u,'int32'));else,v=double(u);end
+assert(isfinite(v),'m600check:GeometryTypedRow','Nonfinite guard.');
+if isfield(p,'decoded'),assert(isscalar(p.decoded)&&double(p.decoded)==v,'m600check:GeometryTypedRow','Typed decoded/raw-bits mismatch.');end
+r=struct('name',name,'mav_type',t,'raw_bits_hex',h);
+end
+function h=bits(v)
+assert((ischar(v)&&isrow(v))||(isstring(v)&&isscalar(v)),'m600check:GeometryBits','Hex must be scalar text.');
+h=upper(char(v));assert(~isempty(regexp(h,'^[0-9A-F]{8}$','once')),'m600check:GeometryBits','Expected eight hex digits.');
+end
+function v=real32(h),v=typecast(uint32(hex2dec(h)),'single');end
+function v=yes(x),v=(isnumeric(x)||islogical(x))&&isscalar(x)&&isreal(x)&&isfinite(x)&&x==1;end
+function v=zero(x),v=(isnumeric(x)||islogical(x))&&isscalar(x)&&isreal(x)&&isfinite(x)&&x==0;end
+function v=finite(x),v=isnumeric(x)&&isscalar(x)&&isreal(x)&&isfinite(x);end
+function names=allNames()
+names={'CA_AIRFRAME','CA_METHOD','CA_R_REV','THR_MDL_FAC','MPC_THR_HOVER','MPC_USE_HTE', ...
+    'MC_ROLL_P','MC_PITCH_P','MC_YAW_P','MC_AIRMODE','FD_FAIL_R','FD_FAIL_P','FD_FAIL_R_TTRI', ...
+    'FD_FAIL_P_TTRI','COM_LKDOWN_TKO','COM_SPOOLUP_TIME'};
+for i=0:5,for s={'PX','PY','PZ','AX','AY','AZ','CT','KM'},names{end+1}=sprintf('CA_ROTOR%d_%s',i,s{1});end;end %#ok<AGROW>
+for axis={'ROLL','PITCH','YAW'},for s={'P','I','D','FF','K'},names{end+1}=sprintf('MC_%sRATE_%s',axis{1},s{1});end;end %#ok<AGROW>
+end

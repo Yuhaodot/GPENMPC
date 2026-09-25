@@ -1,0 +1,96 @@
+function receipt = gpenmpcWriteNativeEnmpcCase(caseRoot, trace, result)
+%GPENMPCWRITENATIVEENMPCCASE Write one immutable content-addressed case.
+
+arguments
+    caseRoot (1,1) string
+    trace (1,1) struct
+    result (1,1) struct
+end
+if ~isfolder(caseRoot)
+    mkdir(caseRoot);
+end
+existing = dir(fullfile(caseRoot, "NATIVE_CASE_RESULT_*.json"));
+existingCommit = dir(fullfile(caseRoot, "NATIVE_CASE_COMMIT_*.json"));
+existingFailure = dir(fullfile(caseRoot, "NATIVE_CASE_IMPLEMENTATION_FAILURE_*.json"));
+if ~isempty(existing) || ~isempty(existingCommit) || ~isempty(existingFailure)
+    error("gpenmpcWriteNativeEnmpcCase:AlreadyExists", ...
+        "A terminal or partial terminal artifact already exists below %s.", caseRoot);
+end
+token = string(char(java.util.UUID.randomUUID()));
+temporaryTrace = fullfile(caseRoot, ".trace_" + token + ".mat");
+save(temporaryTrace, "trace", "-v7");
+traceSha = gpenmpcSha256File(temporaryTrace);
+tracePath = fullfile(caseRoot, "NATIVE_CASE_TRACE_" + extractBefore(traceSha, 17) + ".mat");
+commitImmutable(temporaryTrace, tracePath, traceSha);
+
+result.trace_path = string(tracePath);
+result.trace_bytes = dir(tracePath).bytes;
+result.trace_sha256 = traceSha;
+resultText = jsonencode(result, PrettyPrint=true);
+temporaryResult = fullfile(caseRoot, ".result_" + token + ".json");
+writelines(resultText, temporaryResult, Encoding="UTF-8");
+resultSha = gpenmpcSha256File(temporaryResult);
+resultPath = fullfile(caseRoot, "NATIVE_CASE_RESULT_" + extractBefore(resultSha, 17) + ".json");
+commitImmutable(temporaryResult, resultPath, resultSha);
+
+ledger = struct( ...
+    "schema", "GPENMPC_MATLAB_NATIVE_ENMPC_CASE_LEDGER_V1", ...
+    "mission_id", result.mission_id, ...
+    "planner_id", result.planner_id, ...
+    "method_id", result.method_id, ...
+    "outer_period_s", result.outer_period_s, ...
+    "result_path", string(resultPath), ...
+    "result_bytes", dir(resultPath).bytes, ...
+    "result_sha256", resultSha, ...
+    "trace_path", string(tracePath), ...
+    "trace_bytes", dir(tracePath).bytes, ...
+    "trace_sha256", traceSha);
+temporaryLedger = fullfile(caseRoot, ".ledger_" + token + ".json");
+writelines(jsonencode(ledger, PrettyPrint=true), temporaryLedger, Encoding="UTF-8");
+ledgerSha = gpenmpcSha256File(temporaryLedger);
+ledgerPath = fullfile(caseRoot, "NATIVE_CASE_LEDGER_" + extractBefore(ledgerSha, 17) + ".json");
+commitImmutable(temporaryLedger, ledgerPath, ledgerSha);
+
+% The content-addressed commit is written last.  A dispatch without this
+% marker is never considered a completed scientific case, even if a process
+% stopped after moving one of the three payload files into place.
+commit = struct( ...
+    "schema", "GPENMPC_MATLAB_NATIVE_ENMPC_CASE_COMMIT_V1", ...
+    "status", "ATOMIC_CASE_COMMITTED", ...
+    "mission_id", result.mission_id, ...
+    "planner_id", result.planner_id, ...
+    "method_id", result.method_id, ...
+    "outer_period_s", result.outer_period_s, ...
+    "result_sha256", resultSha, ...
+    "trace_sha256", traceSha, ...
+    "ledger_sha256", ledgerSha);
+commitReceipt = gpenmpcWriteContentAddressedJson(caseRoot, ...
+    "NATIVE_CASE_COMMIT", commit);
+
+receipt = struct("case_root", caseRoot, "result_path", string(resultPath), ...
+    "result_sha256", resultSha, "trace_path", string(tracePath), ...
+    "trace_sha256", traceSha, "ledger_path", string(ledgerPath), ...
+    "ledger_sha256", ledgerSha, "commit_path", commitReceipt.path, ...
+    "commit_sha256", commitReceipt.sha256);
+end
+
+function commitImmutable(temporary, destination, expectedSha)
+if isfile(destination)
+    if gpenmpcSha256File(destination) ~= expectedSha
+        error("gpenmpcWriteNativeEnmpcCase:Collision", ...
+            "Content-address prefix collision at %s.", destination);
+    end
+    delete(temporary);
+    return
+end
+[moved, message] = movefile(temporary, destination);
+if ~moved
+    if isfile(destination) && gpenmpcSha256File(destination) == expectedSha
+        delete(temporary);
+    else
+        error("gpenmpcWriteNativeEnmpcCase:Commit", ...
+            "Immutable case payload commit failed at %s: %s", ...
+            destination, message);
+    end
+end
+end

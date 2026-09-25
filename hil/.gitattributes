@@ -1,0 +1,10 @@
+* -text
+*.mat binary
+*.slx binary
+*.png binary
+*.dll binary
+*.mexw64 binary
+*.a binary
+*.px4 binary
+*.bin binary
+*.elf binary

@@ -1,0 +1,9 @@
+local/
+outputs/
+logs/
+__pycache__/
+.pytest_cache/
+*.asv
+!codegen/
+!*_ert_rtw/
+!*.mexw64

@@ -1,0 +1,46 @@
+function config = gpenmpcApplyCommandContinuityConfiguration(config)
+%GPENMPCAPPLYCOMMANDCONTINUITYCONFIGURATION Configure bounded continuity.
+%
+% The outer solver runs at every scheduled update. This layer retains the last
+% feasible command for at most one outer period after one ordinary no-feasible
+% update. Hard-invalid evidence and identity or authority violations pass
+% directly to fallback handling.
+
+arguments
+    config (1,1) struct
+end
+
+config.command_continuity_enabled = true;
+config.last_feasible_hold_outer_ticks = 1;
+config.command_source_codebook = struct( ...
+    "NEW_FEASIBLE_CANDIDATE", 1, ...
+    "ONE_PERIOD_LAST_FEASIBLE_HOLD", 2, ...
+    "EXACT_B1_FALLBACK", 3, ...
+    "SAFE_NEUTRAL_COMMAND", 4, ...
+    "HARD_INVALID_TERMINATION", 5);
+
+required = ["coordinated_risk_equivalence_tolerance", ...
+    "coordinated_tracking_equivalence_tolerance", ...
+    "coordinated_objective_relative_switch_improvement"];
+for name = required
+    if ~isfield(config, name)
+        error("gpenmpcApplyCommandContinuityConfiguration:Config", ...
+            "Missing required selector field %s.", name);
+    end
+end
+if abs(double(config.coordinated_risk_equivalence_tolerance) - 1.0e-6) ...
+        > 1.0e-15
+    error("gpenmpcApplyCommandContinuityConfiguration:RiskTolerance", ...
+        "Risk equivalence tolerance must remain 1e-6.");
+end
+if abs(double(config.coordinated_tracking_equivalence_tolerance) - 1.0e-4) ...
+        > 1.0e-15
+    error("gpenmpcApplyCommandContinuityConfiguration:TrackingTolerance", ...
+        "Tracking equivalence tolerance must remain 1e-4.");
+end
+if abs(double(config.coordinated_objective_relative_switch_improvement) - 0.005) ...
+        > 1.0e-15
+    error("gpenmpcApplyCommandContinuityConfiguration:Hysteresis", ...
+        "Objective switch hysteresis must remain 0.5 percent.");
+end
+end

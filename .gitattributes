@@ -1,0 +1,8 @@
+* -text
+*.mat binary
+*.slx binary
+*.png binary
+*.fig binary
+*.pdf binary
+*.json -text
+*.csv -text

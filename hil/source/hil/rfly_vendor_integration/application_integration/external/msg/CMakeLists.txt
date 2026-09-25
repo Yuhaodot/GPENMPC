@@ -1,0 +1,15 @@
+# Called by the real PX4 msg/CMakeLists.txt before it generates any metadata.
+# Replace the two schemas rather than append duplicate basename definitions.
+include("${CMAKE_CURRENT_LIST_DIR}/../../PreparedPaths.cmake")
+foreach(_name ActuatorArmed ActuatorOutputs)
+  set(_old "${PX4_SOURCE_DIR}/msg/${_name}.msg")
+  list(FIND msg_files "${_old}" _index)
+  if(_index EQUAL -1)
+    message(FATAL_ERROR "Expected original message is absent: ${_old}")
+  endif()
+  list(REMOVE_AT msg_files ${_index})
+  list(INSERT msg_files ${_index} "${CMAKE_CURRENT_LIST_DIR}/${_name}.msg")
+endforeach()
+list(APPEND msg_files "${GPENMPC_RFLY}/local_source_ingress/GPENMPCOriginalHilReceipt.msg")
+set(msg_files "${msg_files}" PARENT_SCOPE)
+set(config_msg_list_external GPENMPCFullInnerIngress.msg PARENT_SCOPE)

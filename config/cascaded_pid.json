@@ -1,0 +1,88 @@
+{
+  "selected_profile_id": "HIGH",
+  "selected_configuration": {
+    "schema": "GPENMPC_CASCADED_PID_BASELINE_CONFIGURATION_V1",
+    "public_name": "Cascaded PID Control",
+    "internal_method_id": "C0_CASCADED_PID",
+    "control_period_s": 0.01,
+    "position_loop": {
+      "proportional_velocity_gain_s_inv": [
+        0.414,
+        0.414,
+        0.48299999999999993
+      ],
+      "maximum_velocity_correction_mps": [
+        3,
+        3,
+        2
+      ]
+    },
+    "velocity_loop": {
+      "proportional_acceleration_gain_s_inv": [
+        1.3455,
+        1.3455,
+        1.5525
+      ],
+      "integral_acceleration_gain_s2": [
+        0.02,
+        0.02,
+        0.03
+      ],
+      "derivative_acceleration_gain": [
+        0.034499999999999996,
+        0.034499999999999996,
+        0.028749999999999998
+      ],
+      "integral_error_limit_m": [
+        1,
+        1,
+        0.6
+      ]
+    },
+    "attitude_loop": {
+      "proportional_body_rate_gain_s_inv": [
+        1.8974999999999997,
+        1.8974999999999997,
+        1.3569999999999998
+      ],
+      "maximum_body_rate_command_rad_s": [
+        1.5,
+        1.5,
+        1
+      ]
+    },
+    "body_rate_loop": {
+      "proportional_moment_gain_nm_s_per_rad": [
+        8.758399999999998,
+        8.758399999999998,
+        11.729999999999999
+      ],
+      "integral_moment_gain_nm_per_rad": [
+        0.2,
+        0.2,
+        0.16
+      ],
+      "derivative_moment_gain_nm_s2_per_rad": [
+        0.13799999999999998,
+        0.13799999999999998,
+        0.11499999999999999
+      ],
+      "integral_error_limit_rad": [
+        0.3,
+        0.3,
+        0.25
+      ]
+    },
+    "anti_windup": {
+      "freeze_integrators_while_rotor_saturated": true,
+      "reset_on_leg_or_service_transition": true
+    },
+    "authority": {
+      "force_projection": "COMMON_M600_FORCE_PROJECTION",
+      "rotor_allocation": "COMMON_SIX_ROTOR_PSEUDOINVERSE",
+      "rotor_limits": "COMMON_PER_ROTOR_LIMITS",
+      "additional_force_or_moment_authority": false
+    },
+    "selected_profile_id": "HIGH"
+  }
+}
