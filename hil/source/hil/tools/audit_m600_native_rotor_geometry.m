@@ -91,7 +91,7 @@ try
                 'original_raw_bits_hex',upper(v.raw_bits_hex),'candidate_value',nv, ...
                 'candidate_raw_bits_hex',bits(nv),'rollback_value',double(v.decoded), ...
                 'rollback_raw_bits_hex',upper(v.raw_bits_hex), ...
-                'provenance','MODEL_GEOMETRY_INTERFACE_ALIGNMENT__NO_SCREEN_OR_CONTROLLER_TUNING', ...
+                'provenance','MODEL_GEOMETRY_INTERFACE_ALIGNMENT', ...
                 'changed',~strcmpi(v.raw_bits_hex,bits(nv)));
         end
     end
@@ -108,7 +108,7 @@ try
     report.actual_alignment_max_abs=max(abs(actualPerN-canonicalPerN),[],'all');
     report.candidate_alignment_max_abs=max(abs(candidatePerN-canonicalPerN),[],'all');
     report.numerical_real32_alignment_tolerance=1e-7;
-    report.tolerance_provenance='REAL32_ROUNDING_CHECK_ONLY__NOT_FLIGHT_OR_PERFORMANCE_SCREEN';
+    report.tolerance_provenance='REAL32_ROUNDING';
     report.candidate_geometry_aligned=report.candidate_alignment_max_abs<=1e-7;
     report.actual_yaw_sign_matches=isequal(sign(actualPerN(3,:)),sign(canonicalPerN(3,:)));
     report.actual_collective_thrust_matches=max(abs(actualPerN(4:6,:)-canonicalPerN(4:6,:)),[],'all')==0;

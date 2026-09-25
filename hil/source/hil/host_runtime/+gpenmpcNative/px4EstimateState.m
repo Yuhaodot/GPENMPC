@@ -88,7 +88,6 @@ if ~finiteVector(p,3) || ~finiteVector(v,3) || ~finiteVector(q,4) || ~finiteVect
 end
 q=double(q(:));n=norm(q);
 % Unit-quaternion tolerance is a numerical representation guard only.
-% It does not change any attitude/tracking performance criterion.
 if abs(n-1)>1e-6
     reason='NONUNIT_QUATERNION';return
 end
@@ -110,4 +109,3 @@ end
 function y=textScalar(v)
 y=(ischar(v) && isrow(v)) || (isstring(v) && isscalar(v) && ~ismissing(v));
 end
-

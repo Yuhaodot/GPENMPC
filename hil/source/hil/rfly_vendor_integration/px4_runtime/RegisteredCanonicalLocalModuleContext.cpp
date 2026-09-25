@@ -295,9 +295,9 @@ ModuleCloseResult RegisteredCanonicalLocalModuleContext::close(ModuleStopReason 
             diagnostics_.actual_publication_attempts=io_->diagnostics().publish_attempts;
             diagnostics_.actual_publication_successes=io_->diagnostics().publish_succeeded;
             if(core_){
-                // Preserve the live first-fault hierarchy before stop() adds a
-                // terminal Stopped disposition.  This is read-only diagnostic
-                // state; it grants no authority and changes no recovery order.
+                // Capture component faults before stop() adds the Stopped disposition.
+
+
                 diagnostics_.exchange_before_stop=core_->diagnostics();
                 diagnostics_.cycle_before_stop=cycle_->diagnostics();
                 diagnostics_.local_io_before_stop=io_->diagnostics();
@@ -307,7 +307,7 @@ ModuleCloseResult RegisteredCanonicalLocalModuleContext::close(ModuleStopReason 
                 diagnostics_.nested_diagnostics_observed=true;
                 // Emit the already retained first-fault hierarchy once, after
                 // direct output and observation routes have been detached.
-                // No extra admission, protocol, or work on a healthy cycle.
+
                 if(diagnostics_.first_fault!=RegisteredLocalContextFault::None){
                     PX4_ERR("LOCAL_CTX f=%u e=%u c=%u w=%u p=%u t=%llu n=%llu",
                         unsigned(diagnostics_.first_fault),
@@ -316,8 +316,8 @@ ModuleCloseResult RegisteredCanonicalLocalModuleContext::close(ModuleStopReason 
                         unsigned(core_->outbox().fault()),unsigned(prestream_.first_reason()),
                         (unsigned long long)diagnostics_.first_fault_us,
                         (unsigned long long)diagnostics_.exchange_before_stop.commits);
-                    // Read the already-existing authority first fault only
-                    // after detachment; no added work on a healthy control tick.
+                    // Read the first authority fault after detachment.
+
                     // IO Ownership alone conflates an actual control change,
                     // an expired guard and an unconsumed stream publication.
                     LeaseDiagnostics lease{};

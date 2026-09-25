@@ -1,5 +1,5 @@
-// Independent direct generated-C call for the ABI commit boundary test.
-// HOST only: this is not another production controller or state owner.
+// Host ABI commit boundary test calling generated C directly.
+
 #include "../CanonicalCombinedSymbolNamespace.h"
 #include "CanonicalFullInnerAbi.h"
 #ifdef GPENMPC_CANONICAL_LEARNING_AUDIT

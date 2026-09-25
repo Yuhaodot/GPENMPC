@@ -132,7 +132,7 @@ disp(jsonencode(report));
         assert(~c.status().service.async_in_flight);
     end
     function [p,v,w]=obs(g,sourceUs,deltaUs,hostNs)
-        % Only a HOST test fixture generator. No decoder/production source rewrite.
+        % Generate synthetic host observation fixtures.
         b=base;b(59:62)=be(uint32(g));b(63:70)=be(sourceUs);
         b(71:78)=be(sourceUs+uint64(100));b(79:86)=be(sourceUs+uint64(200));
         b(167:174)=be(uint64(1));b(175:182)=be(deltaUs);

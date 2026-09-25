@@ -66,7 +66,7 @@ try
     end
     [q,ok]=gpenmpcNative.canonicalRotorToActuatorMotors(zeros(6,1),a.calibration,interface);
     check('zero_not_disarmed_state_claim',ok&&all(q.expected_hil_controls_1_to_6_on==0)&&~q.publication_allowed);
-    % Narrow fixtures around one PWM rounding boundary; no selected result tuning.
+    % Narrow fixtures around one PWM rounding boundary.
     offsets=[-1e-4,1e-4];raw.rounding_boundaries=cell(1,2);
     for j=1:2
         n=ones(6,1)*upper*(.1235+offsets(j));

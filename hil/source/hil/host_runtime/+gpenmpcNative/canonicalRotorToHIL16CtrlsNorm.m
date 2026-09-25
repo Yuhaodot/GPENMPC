@@ -73,7 +73,7 @@ result.expected_linear_host_decoded_rotor_newton=decoded;
 result.signed_float32_quantization_error_newton=decoded-rotorN;
 result.maximum_absolute_error_newton=max(abs(decoded-rotorN));
 % In [0,1], the largest float32 spacing BELOW 1 is 2^-24. Half is 2^-25.
-% The extra guard bounds the double division and multiplication, not tuning.
+% The extra guard bounds the double division and multiplication.
 result.float32_half_step_bound_newton=upper*2^-25;
 result.float64_arithmetic_guard_newton=2*eps(upper);
 result.requested_allocated_wrench_txyz=A*rotorN;

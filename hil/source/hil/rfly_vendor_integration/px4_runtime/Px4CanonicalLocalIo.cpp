@@ -84,7 +84,7 @@ bool Px4CanonicalLocalIo::fail(LocalFault f)noexcept{
     if(authority_)authority_->revoke();
     // Report the existing first-error state after revoking control, not only
     // after successful context destruction (Closing may await external zero).
-    // No extra work or admission condition is introduced on a healthy tick.
+
     if(first&&f!=LocalFault::Stopped){
         PX4_ERR("LOCAL_IO fault=%u us=%llu source=%u consume=%u",unsigned(f),
             (unsigned long long)diagnostics_.first_fault_us,unsigned(diagnostics_.source_adapter_fault),unsigned(consumption_.fault()));
