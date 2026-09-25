@@ -184,8 +184,6 @@ and SDK inputs listed in [Simulator setup](hil/docs/platform_inputs.md).
 
 Thanks to Giordano Scarciotti, Martina Sciola and Roberto Valenti for the
 opportunity to undertake this project and for their feedback and discussions.
-ChatGPT (Codex) assisted with code implementation, debugging, testing utilities
-and documentation.
 
 Project code is distributed under the [MIT License](LICENSE). Geographic data
 and referenced model sources retain the terms listed in
