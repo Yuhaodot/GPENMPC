@@ -1093,7 +1093,7 @@ assert(all(isfield(cfg,{'temporary_allocator_geometry','native_hover_tuning'})),
 [originalContracts,originalProof]=load_m600_recovery_contracts();
 assert(isequaln(cfg.temporary_allocator_geometry,originalContracts.temporary_allocator_geometry) ...
     &&isequaln(cfg.native_hover_tuning,originalContracts.native_hover_tuning), ...
-    'gpenmpcShort:OriginalRecoveryContracts','Recovery contracts must be unchanged structures from the exact original 005 plan.');
+    'gpenmpcShort:OriginalRecoveryContracts','Recovery contracts must match the bound recovery plan.');
 receipt.original_recovery_contract_source=originalProof;
 entries=cfg.temporary_allocator_geometry.entries(:);
 entries=[entries;cfg.native_hover_tuning.entries(:)];

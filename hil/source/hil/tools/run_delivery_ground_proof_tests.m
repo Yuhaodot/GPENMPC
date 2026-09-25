@@ -138,7 +138,7 @@ o=fixtureObservation(8.25);o.heartbeat.armed=1;o.plant_contact=true;
 [~,q,tok]=call(s,o,8.25,fixtureRequest(2),qNoPlant);
 check('plant_true_cannot_override_px4_armed',isempty(tok)&&~q.current_native_ground_disarmed_evidence_valid);
 badPolicy=p;badPolicy.service_dwell_s=10;
-check('DV008_ten_seconds_not_silently_imported',throws(@()gpenmpcTaskIo.advanceDeliveryGroundProof([],fixtureObservation(0),0,r,badPolicy)));
+check('invalid_ten_second_dwell_rejected',throws(@()gpenmpcTaskIo.advanceDeliveryGroundProof([],fixtureObservation(0),0,r,badPolicy)));
 [s,~,~]=drive([],0:.25:1,r,p);changedPolicy=p;changedPolicy.max_heartbeat_age_s=1;
 check('policy_cannot_change_mid_dwell',throws(@()gpenmpcTaskIo.advanceDeliveryGroundProof(s,fixtureObservation(1.25),1.25,r,changedPolicy)));
 check('proof_has_zero_execution_authority',lastProof.hardware_actions==0&&lastProof.parameter_mapping_write_count==0&& ...

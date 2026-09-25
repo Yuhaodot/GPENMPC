@@ -1,7 +1,6 @@
 function report = runPointwiseEquivalence(workRoot,taskPath)
-%RUNPOINTWISEEQUIVALENCE HOST-only arithmetic regression; no simulation run.
-% Calling this function never opens a transport, launches a simulator, or
-% writes old evidence. The caller owns saving the returned report.
+%RUNPOINTWISEEQUIVALENCE Pointwise arithmetic regression.
+% The caller saves the returned report.
 if nargin==0
     f=m600check.loadFixture();
 elseif nargin==1

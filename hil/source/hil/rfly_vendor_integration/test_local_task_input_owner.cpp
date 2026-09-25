@@ -1,5 +1,5 @@
 #include "px4_runtime/CanonicalLocalTaskInputOwner.hpp"
-#define GPENMPC_CORE_TEST_MAIN historical_core_wmain_not_executed
+#define GPENMPC_CORE_TEST_MAIN exchange_core_test_entry
 #include "test_local_exchange_core.cpp"
 #undef GPENMPC_CORE_TEST_MAIN
 namespace tw=gpenmpc_local_task_wire;

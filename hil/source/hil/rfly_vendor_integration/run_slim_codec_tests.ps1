@@ -53,4 +53,4 @@ try{
     Pop-Location
     foreach($rflyFile in $rflyProtected){if((Get-FileHash -LiteralPath $rflyFile).Hash -ne $rflyBefore[$rflyFile]){throw ('Source/fixture changed: '+$rflyFile)}}
 }
-Write-Output 'Offline component tests passed; source and fixture hashes are unchanged; no device access.'
+Write-Output 'Offline component tests passed.'

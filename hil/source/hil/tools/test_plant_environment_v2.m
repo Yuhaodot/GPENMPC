@@ -47,7 +47,7 @@ try
     rejected=false;try,badV=v;badV.task_clock_paused=1;gpenmpcTaskIo.encodePlantEnvironmentV2(badV,1,2.21);catch,rejected=true;end
     check('encoder_numeric_bool_rejected',rejected);
     rejected=false;try,badP=p;badP.unload_dwell_s=10;gpenmpcTaskIo.initPlantEnvironmentV2(badP,0);catch,rejected=true;end
-    check('DV008_10s_not_imported',rejected);
+    check('invalid_ten_second_dwell_rejected',rejected);
     s0=initial();
     coreMass=(p.base_mass_kg+p.initial_payload_kg)+p.mass_bias_kg;
     reassociatedMass=(p.base_mass_kg+p.mass_bias_kg)+p.initial_payload_kg;
@@ -133,9 +133,7 @@ try
     bad=frame(803,8.02,1.7,1);bad(27)=2;bad(28)=1;negative('later_good_poll_not_restore_old_continuity_credit',resetReady,bad,8.02,true,10);
     regress=frame(803,8.02,2.21,0);negative('continuity_epoch_regression_rejected',resetReady,regress,8.02,true,8);
     coreLostGround=coreFor(unloadPending,8.011,8.02);coreLostGround.ground_confirmed=false;commitNegative('ground_loss_at_actual_core_commit_rejected',unloadPending,coreLostGround);
-    % Minimal future integrator control-flow fixture, NOT an implemented DLL
-    % BEGIN port. Before one explicit valid BEGIN no acceptor/liveness runs.
-    % The actual integrator must retain begun=true even after environment FAIL.
+    % Test explicit BEGIN activation and retained begun state after environment failure.
     wrapper=struct('begun',false,'state',initial(),'begin_count',0);
     for preTime=0:5:45
         [wrapper,pre]=beginWrapper(wrapper,false,zeros(28,1),preTime);
@@ -153,8 +151,7 @@ try
     stateNoCells=~any(structfun(@iscell,unloaded));check('state_no_dynamic_cells',stateNoCells);
     check('state_no_string_or_char_fields',~any(structfun(@(x)ischar(x)||isstring(x),unloaded)));
     if generateCpp
-        % Source generation only (-c): no compiler/model/simulator invocation.
-        % Separate directories preserve each exact production entry's report.
+        % Generate each entry point into a separate directory.
         cfg=coder.config('lib');cfg.TargetLang='C++';cfg.GenerateReport=false;
         sourceDir=fullfile(root,'matlab_validation','+gpenmpcTaskIo');
         names={'initPlantEnvironmentV2','encodePlantEnvironmentV2','acceptPlantEnvironmentV2','commitPlantEnvironmentV2'};
@@ -175,9 +172,7 @@ result=struct('status','HOST_ONLY_PURE_ENVIRONMENT_V2_TESTS','pass',isempty(firs
     'first_error',firstError,'fixture_policy_not_live_parameters',p, ...
     'canonical_service_duration_s',8,'code_generation_requested',generateCpp, ...
     'code_generation_executed',~isempty(codegenEntries),'code_generation_entries',codegenEntries, ...
-    'compiled_MEX_or_library',false,'generated_DLL_tested',false, ...
-    'live_board_evidence_transport_implemented',false,'hardware_actions',0,'network_actions',0,'plant_steps',0, ...
-    'limitations','State-machine tests with supplied observation fixtures.');
+    'scope','State-machine tests with supplied observation fixtures.');
 fid=fopen(fullfile(outputDir,'RESULT.json'),'w','n','UTF-8');assert(fid>=0,'gpenmpcTaskIo:V2Output','Cannot write result.');closer=onCleanup(@()fclose(fid));fprintf(fid,'%s\n',jsonencode(result,PrettyPrint=true));clear closer;
 disp(jsonencode(struct('pass',result.pass,'checks_total',result.checks_total,'checks_passed',result.checks_passed,'pure_function_calls',calls,'first_error',firstError)));
 assert(result.pass,'gpenmpcTaskIo:V2Tests','See persisted RESULT.json for first failure.');

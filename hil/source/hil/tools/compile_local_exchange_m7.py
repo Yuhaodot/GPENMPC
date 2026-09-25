@@ -1,5 +1,4 @@
 """Compile only the changed local exchange/stream-owner TUs against real NuttX.
-No device access, process control, uploader or live firmware invocation.
 """
 from pathlib import Path
 import hashlib,json,os,shlex,subprocess,sys

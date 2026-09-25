@@ -1,7 +1,6 @@
 function allocation = generatedAllocation(calibration)
 %#codegen
-% Same arithmetic as immutable gpenmpcM600Allocation, SHA 8888EFB8...2D00F.
-% Only change: construct every field before reading the structure (Coder).
+% Code-generation-compatible six-rotor allocation.
 rotor=calibration.rotor_allocation;
 angles=deg2rad(double(rotor.angles_deg(:)));spin=double(rotor.spin_sign(:));
 arm=double(rotor.arm_radius_m);yawArm=double(rotor.yaw_moment_arm_nominal_m);

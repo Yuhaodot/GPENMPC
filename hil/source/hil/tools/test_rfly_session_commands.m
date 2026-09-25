@@ -134,8 +134,7 @@ rejected('stream_arbitrary_rate',@()gpenmpcNative.RflySessionCommandEncoder('str
 rejected('stream_nonlogical',@()gpenmpcNative.RflySessionCommandEncoder('stream_snapshot',struct('enabled',1),d,target));
 rejected('broadcast_target',@()gpenmpcNative.RflySessionCommandEncoder('status',struct(),d,set(target,'system',uint8(0))));
 report=struct('scope','HOST_ONLY_EXACT_NSH_COMMAND_ENCODER_OFFICIAL_CODEC','passed',all([checks.pass]), ...
-    'checks',checks,'checks_total',numel(checks),'connections',0,'hardware_actions',0, ...
-    'no_command_sent',true,'no_board_ack_proven',true);
+    'checks',checks,'checks_total',numel(checks),'connections',0,'hardware_actions',0);
 save(fullfile(outputRoot,'RAW.mat'),'raw','report');
 f=fopen(fullfile(outputRoot,'RESULT.json'),'wt');assert(f>0);c=onCleanup(@()fclose(f));fprintf(f,'%s\n',jsonencode(report,PrettyPrint=true));clear c
 disp(jsonencode(struct('passed',report.passed,'checks',report.checks_total,'hardware_actions',0)));

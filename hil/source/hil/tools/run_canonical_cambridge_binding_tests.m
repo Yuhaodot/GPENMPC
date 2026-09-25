@@ -12,12 +12,12 @@ data=load(fullfile(packageRoot,'MU_CAMBRIDGE_MA_02__CANONICAL_PHYSICAL_TASK.mat'
 task=data.physicalTask; timeline=data.timeline;
 positive=validate_canonical_cambridge_binding(task,cfg,ledger,mission,method,timeline);
 tests=struct('name',"exact_canonical_positive",'pass',true);
-t=task; t.mission_id="ENMPC_DV_008"; reject('mislabeled_DV008',t,method);
+t=task; t.mission_id="ENMPC_DV_008"; reject('wrong_mission_id',t,method);
 t=task; t.planner_id="P_FIXED_SPEED"; reject('wrong_planner',t,method);
 t=task; t.visit_order=flipud(t.visit_order); reject('wrong_visit_order',t,method);
 t=task; t.route_candidate_ids(1)="WRONG_ROUTE"; reject('wrong_route',t,method);
 t=task; t.plan_payload_sha256=repmat('0',1,64); reject('wrong_plan_digest',t,method);
-t=task; t.physical_service.ground_dwell_s=10; reject('DV008_ten_second_dwell',t,method);
+t=task; t.physical_service.ground_dwell_s=10; reject('invalid_ten_second_dwell',t,method);
 t=task; t.reference.payload_kg(1)=2.27; reject('wrong_initial_payload',t,method);
 t=task; t.mission_config.plant_mismatch.mass_bias_kg=0; reject('environment_mismatch',t,method);
 t=task; t.reference.position_m(100,1)=t.reference.position_m(100,1)+0.01; reject('transit_not_exact',t,method);

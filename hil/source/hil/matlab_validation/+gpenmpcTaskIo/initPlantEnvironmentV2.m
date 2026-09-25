@@ -13,7 +13,7 @@ assert(isa(p.initial_reference_jet_ned,'double')&&isequal(size(p.initial_referen
 assert(integerIn(p.expected_session_token,1,flintmax),'gpenmpcTaskIo:V2Policy','Exact session token required.');
 assert(finiteScalar(p.max_env_age_s)&&p.max_env_age_s>0&&finiteScalar(p.max_board_age_s)&&p.max_board_age_s>0,'gpenmpcTaskIo:V2Policy','Explicit positive freshness bounds required.');
 assert(finiteScalar(p.max_future_skew_s)&&p.max_future_skew_s>=0&&finiteScalar(p.max_ground_sample_gap_s)&&p.max_ground_sample_gap_s>0,'gpenmpcTaskIo:V2Policy','Invalid skew/gap bound.');
-assert(finiteScalar(p.unload_dwell_s)&&p.unload_dwell_s==8.0,'gpenmpcTaskIo:V2Policy','Canonical service requires exactly 8 s, not DV008 10 s.');
+assert(finiteScalar(p.unload_dwell_s)&&p.unload_dwell_s==8.0,'gpenmpcTaskIo:V2Policy','Service dwell must be 8 s.');
 assert(finiteScalar(p.max_commit_delay_s)&&p.max_commit_delay_s>0,'gpenmpcTaskIo:V2Policy','Explicit commit age bound required.');
 assert(finiteScalar(p.base_mass_kg)&&p.base_mass_kg>0&&finiteScalar(p.mass_bias_kg),'gpenmpcTaskIo:V2Policy','Explicit actual mass model required.');
 assert(finiteScalar(p.mass_tolerance_kg)&&p.mass_tolerance_kg>=0,'gpenmpcTaskIo:V2Policy','Explicit mass readback tolerance required.');

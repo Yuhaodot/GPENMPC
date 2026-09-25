@@ -134,7 +134,7 @@ int GPENMPC_GP_PENDING_TEST_MAIN(int argc,wchar_t**argv){
         check(actual_reply(p,predict,reply),"actual reply after original actuator lease age");
         const auto expiry=p.retained_actual_feedback().actual.original_valid_until_us;const auto pubs=publish_calls;
         check(p.accept_reply(reply,expiry+1,expiry+2)&&publish_calls==pubs&&o.phase->diagnostics().installs==2,
-            "GP fill after old publication expiry grants no new output, no arbitrary five-ms GP deadline");
+            "GP reply accepted after actuator publication expiry");
         clock_us=expiry+3;StepInputs next{};check(o.capture(2,next)&&o.cycle->execute(next.value)==li::LocalCycleExecute::Committed,
             "next real new source still must satisfy original age dt and whole actual Cycle gates");}
     {CycleOwner o;li::CanonicalLocalGpPending p(*o.cycle);check(two_commits(o,p),"duplicate actual reply setup");gw::ReplyBytes reply{};actual_reply(p,predict,reply);

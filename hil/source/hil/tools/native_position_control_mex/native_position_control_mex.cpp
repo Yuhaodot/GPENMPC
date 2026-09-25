@@ -173,7 +173,7 @@ struct Kernel {
         put(out,"velocity_limits_mps",vectorOut(vectorValues,3,false));put(out,"thrust_limits",vectorOut(thrustValues,2,false));
         scalarOut(out,"tilt_limit_rad",tilt,false);scalarOut(out,"effective_minimum_thrust",std::max(thrustMin,.001f),false);
         put(out,"original_setter_call_order",mxCreateString(order.c_str()));put(out,"parameter_provenance",mxCreateString(cfg.provenance.c_str()));
-        put(out,"claim",mxCreateString("EXPLICIT_ORIGINAL_PUBLIC_SETTERS_ONLY__NO_MODULE_PHASE_INFERENCE_OR_OUTPUT_AUTHORITY"));
+        put(out,"claim",mxCreateString("PX4_RUNTIME_CONFIGURATION"));
         return out;
     }
     mxArray *step(const mxArray *s,bool &valid) {

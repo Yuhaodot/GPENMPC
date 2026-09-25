@@ -18,7 +18,7 @@ innerReport=jsondecode(fileread(fullfile(innerRoot,'RESULT.json')));
 assert(strcmp(innerReport.status,'PASS_FIXED_ABI_MATLAB_AND_STANDALONE_C_GENERATION'));
 for k=1:numel(innerReport.sources)
     assert(strcmpi(sha(innerReport.sources(k).path),innerReport.sources(k).sha256), ...
-        'gpenmpcNative:CombinedSourceMismatch','Original 007 source changed: %s',innerReport.sources(k).path);
+        'gpenmpcNative:CombinedSourceMismatch','Bound source mismatch: %s',innerReport.sources(k).path);
 end
 referenceInput=fullfile(gpenmpc_external_path('canonical_reference_window_transition'),'QUERY_CODEGEN_INPUTS.mat');
 q=load(referenceInput,'window','state','request');

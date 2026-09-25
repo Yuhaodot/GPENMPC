@@ -4,6 +4,29 @@ The Windows session uses MATLAB, RflySim and the USB flight controller.
 Firmware build paths are configured separately in [Build](build.md).
 Run the commands below from the `hil/` directory.
 
+## Configuration files
+
+| Input | Location or setting | Use |
+| --- | --- | --- |
+| Board identity | [device.example.json](../config/device.example.json); set `GPENMPC_DEVICE_CONFIG` to the completed private copy | MAVLink UID, PX4 GUID and bootloader serial |
+| Transmitter calibration | `source/hil/tools/usb_rc_runtime/fs_i6s_calibration.mat`, included | FS-i6S stick axes, centres and ranges |
+| Parameter records | `CONTENT_MANIFEST.json`, `OUTER_RESULT.json`, `PLAN.json`, `SERIAL_PREFLIGHT.json`; set `HIL_RECOVERY_RECORDS` to their directory | Parameter setup and return to the recorded configuration |
+| Hardware setup record | Local text file selected by `HIL_SETUP_RECORD` | Description of the USB bench connection and actuator isolation |
+| Recovery application | `SERIAL_POSTFLIGHT.json` plus `GPENMPC_RECOVERY_ROOT/firmware/px4_fmu-v6c_default.px4` | Restore a selected board application |
+| Simulator inputs | [Model and runtime files](platform_inputs.md) | CopterSim dynamics, transport and visualization |
+
+The USB transmitter is a FlySky FS-i6S with vendor ID `284E` and product ID
+`7FFF`. Its supplied calibration is checked against SHA256
+`622F6A22DFE2E6B9E224F93D50DF7EE2B97AED53F0EA1D068B99672F44F682CA`.
+The transmitter and flight controller connect to the host by separate USB
+cables. The bench uses USB power with physical actuators disconnected.
+
+The parameter snapshots and calibration belong to the reference bench.
+Adapting another board or transmitter requires matching records and updating
+the corresponding source bindings, followed by the relevant component checks
+and firmware build. The configuration files carry these identities into a
+session.
+
 ## Device identity
 
 Copy [device.example.json](../config/device.example.json) to a private file,
@@ -49,7 +72,8 @@ matching recovery application. Set `GPENMPC_RECOVERY_ROOT` to an archive contain
 files. Their fixed hashes, byte counts, board identity and parameter comparisons
 are checked before live upload. These hardware-specific records are supplied
 separately. For a different board, provide its matching device file, parameter
-records and recovery application.
+records and recovery application, and update the reference bindings as described
+above.
 
 ## Host installation
 

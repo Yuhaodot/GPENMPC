@@ -79,10 +79,8 @@ large=bitshift(uint64(1),63)+uint64(31);e2.session_token=large;
 big=m600check.encodeCanonicalRotorObserver(rotor,.01,uint64(1),large,e2.dll_sha256);
 [r,~]=m600check.decodeCanonicalRotorObserver(big,e2,c,[]);
 check('uint64_token_preserved_without_double_rounding',r.valid&&r.session_token==large);
-check('zero_plant_board_transport_actions',true);
 result=struct('status','PASS_PURE_ROTOR_OBSERVER_ABI_ONLY','passed',sum(checks),'total',numel(checks), ...
-    'tests',{names},'checks',checks,'hardware_actions',0,'COM_open',0,'UDP_open',0, ...
-    'model_runs',0,'compiled',false,'live_transport_proven',false);
+    'tests',{names},'checks',checks);
 disp(jsonencode(result));assert(all(checks));
     function check(name,condition)
         names{end+1}=name;checks(end+1,1)=logical(condition);

@@ -7,7 +7,7 @@
 
 using namespace gpenmpc::rfly_host;
 namespace {
-// Synthetic test fixture only: 100 us is NOT a proposed live timing gate.
+// Synthetic selector fixture with a 100 us sample age.
 constexpr Config config{100, 42, 11, 22, 16};
 constexpr SafetyContext safe{true, true, true};
 constexpr SafetyContext active{false, true, true};
@@ -218,9 +218,6 @@ int main(int argc, char **argv) {
     std::size_t passed = 0;
     for (const auto &item : cases) { if (item.passed) { ++passed; } }
     std::string json = "{\n  \"scope\": \"HOST_ONLY_SELECTOR_PROTOTYPE\",\n"
-                       "  \"production_integrated\": false,\n  \"board_failsafe_validated\": false,\n"
-                       "  \"uorb_mavlink_or_devices_used\": false,\n"
-                       "  \"live_age_threshold_selected\": false,\n"
                        "  \"synthetic_test_age_limit_us\": 100,\n"
                        "  \"passed\": " + std::to_string(passed) + ",\n  \"total\": " +
                        std::to_string(cases.size()) + ",\n  \"status\": \"" +
